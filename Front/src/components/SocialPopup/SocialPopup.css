@@ -1,0 +1,62 @@
+/* Базовая обертка popup */
+.social-popup {
+  position: fixed;
+  bottom: 100px;
+  right: 70px;
+  z-index: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+}
+
+/* Кнопка открытия/закрытия */
+.social-popup__toggle {
+  background-color: #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Вращение при открытии */
+.social-popup__toggle_rotate {
+  transform: rotate(180deg);
+}
+
+/* Иконки соцсетей */
+.social-popup__icons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* .social-popup__icons_open {
+  opacity: 1;
+  visibility: visible;
+} */
+
+/* Ссылки для соцсетей */
+.social-popup__link {
+  margin-bottom: 10px;
+}
+
+/* Изображения иконок соцсетей */
+.social-popup__icon-img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Анимация появления иконок */
+.social-popup_open .social-popup__icons {
+  opacity: 1;
+  visibility: visible;
+}

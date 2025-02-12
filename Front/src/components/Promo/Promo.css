@@ -1,0 +1,160 @@
+.promo {
+  background-color: #2d3051;
+  padding: 164px 0 120px;
+}
+
+.promo__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.promo__content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.promo__info {
+  max-width: 50%;
+}
+
+.promo__title-wrapper {
+  margin-bottom: 20px;
+}
+
+.promo__title {
+  font-size: 58px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+.promo__query {
+  display: flex;
+  align-items: center;
+  gap: 46px;
+}
+
+.promo__subtitle {
+  font-size: 22px;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 15px 0 30px;
+  line-height: 1.5;
+}
+
+.promo__button-query {
+  width: 233px;
+  height: 52px;
+  background-color: #ffe522;
+  color: #2d3051;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.promo__button-query:hover {
+  background-color: #d4be1a;
+}
+
+/* Стили для списка с ссылками TODO */
+.promo__list {
+  display: grid;
+  justify-content: end;
+  list-style: none;
+  padding: 0;
+  grid-template-columns: repeat(2, auto);
+  gap: 35px 20px;
+}
+
+.promo__list-item {
+  margin: 0;
+}
+
+.promo__link {
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #989bbe;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+.promo__link:hover {
+  background-color: rgb(255, 229, 34);
+  color: #262323;
+}
+
+.promo__image {
+  width: 100%;
+  height: 588px;
+  background: url('../../images/promo/shutterstock_2065336.png') center /
+    contain no-repeat;
+  margin: 40px 0 0;
+}
+.promo__image-item {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Стили для блока этапов работы */
+.promo__steps {
+  margin-top: 110px;
+  width: 100%;
+}
+
+.promo__steps-title {
+  color: #fff;
+  margin: 0 0 48px 0;
+  font-size: 58px;
+  font-weight: 600;
+  line-height: 71px;
+}
+.promo__steps-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.promo__steps-item {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  color: #ccc;
+}
+
+.promo__steps-icon {
+  display: block;
+  margin: 0;
+  width: 55px;
+  height: 50px;
+}
+
+.promo__steps-strong {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 29px;
+  color: #fff;
+}
+
+.promo__steps-paragraph {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #eeeeee;
+}

@@ -1,0 +1,47 @@
+######### Каталог #########
+[GET]
+api/Cards <- Возвращает список карточек с щебнем
+
+[POST]
+[Role -> Admin]
+api/Cards <- Добавляем новую карточку
+
+[GET]
+api/Cards/{Id}
+
+[PATCH/PUT]
+[Role -> Admin]
+api/Cards/{Id}
+
+[DELETE]
+[Role -> Admin]
+api/Cards/{Id}
+
+
+##Register
+#Отсылает
+{
+    Name,
+    Email,
+    Password
+}
+#Получает
+{
+    _id
+}
+
+##Login
+#Отсылает
+{
+    Email,
+    Password
+}
+#Получает
+{
+    token
+}
+
+##Path
+#http://localhost:3000/
+# /signin
+# /signup

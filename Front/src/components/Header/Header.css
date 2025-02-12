@@ -1,0 +1,172 @@
+.header {
+  max-width: 100%; /* Ширина по всему окну */
+  display: flex;
+  justify-content: center; /* Центрирование контейнера */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgb(45, 48, 81);
+}
+
+.header__container {
+  min-width: 1200px;
+  padding: 20px 0;
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(95, 99, 147, 0.7);
+}
+
+.header__link-container {
+  display: flex;
+  gap: 29px;
+}
+
+/* Остальной код остается без изменений */
+
+.header__link {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  transition: opacity 0.2s linear;
+}
+
+.header__link-phone {
+  font-size: 18px;
+}
+
+.header__link:hover {
+  color: #e7eb06;
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.header__link-logo {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header__name-company {
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  transition: opacity 0.2s linear;
+  color: rgb(255, 255, 255);
+}
+
+.header__name-company:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.header__image-logo {
+  width: 43px;
+  height: 43px;
+  transition: opacity 0.2s linear;
+}
+
+.header__image-logo:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+/* Обертка выпадающего меню */
+.header__dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Заголовок выпадающего меню */
+.header__dropdown-title {
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.header__dropdown-title:hover {
+  color: #ffe522;
+}
+
+/* Выпадающее меню */
+.header__dropdown-content {
+  position: absolute;
+  min-width: 260px;
+  padding: 15px;
+  top: 150%; /* Под заголовком */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid rgba(95, 99, 147, 0.7);
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  opacity: 0;
+  transition: opacity 0.3s linear, visibility 0.3s linear;
+  visibility: hidden;
+  z-index: 10;
+}
+
+/* Показ выпадающего меню при наведении */
+.header__dropdown:hover .header__dropdown-content,
+.header__dropdown-content:hover {
+  opacity: 1;
+  visibility: visible; /* Позволяет отобразить блок с анимацией */
+}
+
+/* Треугольник-указатель */
+.header__dropdown-arrow {
+  position: absolute;
+  top: -8px; /* Над меню */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #fff;
+}
+
+/* Ссылки внутри меню */
+.header__dropdown-link {
+  font-size: 16px;
+  font-weight: 400;
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.header__dropdown-link:hover {
+  background-color: #ebe5e5be;
+  color: #f4b524;
+}
+
+/* Кнопка "Оставить заявку" */
+.header_button-query {
+  background-color: rgb(45, 48, 81);
+  border: 1px solid #ffe522;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header_button-query:hover {
+  background-color: #ffe522;
+  color: rgb(45, 48, 81);
+}
