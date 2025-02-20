@@ -1,17 +1,37 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState, useRef } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import CardApi from '../utils/CardsApi';
-import BasketApi from '../utils/BasketApi';
+import ImagePopup from '../ImagePopup/ImagePopup';
+import CardDetailsImage from '../CardDetailsImage/CardDetailsImage';
+import CardDetailsInfo from '../CardDetailsInfo/CardDetailsInfo';
+import CardDetailsColor from '../CardDetailsColor/CardDetailsColor';
+import CardDetailsGate from '../CardDetailsGate/CardDetailsGate';
+import CardDetailsAdvantages from '../CardDetailsAdvantages/CardDetailsAdvantages';
+import CardDetailsFAQ from '../CardDetailsFAQ/CardDetailsFAQ';
 import './CardDetails.css';
 
 function CardDetails() {
-  const { _id } = useParams(); //Получаем Id из URL
-  const [card, setCard] = React.useState({});
-  const [error, setError] = React.useState(null);
-  const [count, setCount] = React.useState(1);
-  const [message, setMessage] = React.useState('');
+  const { _id } = useParams(); // Получаем Id из URL
+  const { pathname } = useLocation();
+  const [card, setCard] = useState(null);
+  const [error, setError] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null);
+  // Состояние для открытого FAQ: храним индекс открытого вопроса или null (если ни один не открыт)
+  const [openFaq, setOpenFaq] = useState(null);
 
-  React.useEffect(() => {
+  // Массив рефов для хранения ссылок на контейнеры ответов FAQ
+  const faqRefs = useRef([]);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }, [pathname]);
+
+  // Загружаем данные карточки по _id
+  useEffect(() => {
     CardApi.getCardDetails({ _id })
       .then((cardData) => {
         setCard(cardData);
@@ -22,129 +42,105 @@ function CardDetails() {
       });
   }, [_id]);
 
-  const handelChangeCount = (evt) => {
-    const value = Math.max(1, evt.target.value);
-    setCount(value);
+  // Эффект для анимации FAQ: обновляем высоту контейнера ответа
+  useEffect(() => {
+    // Если карточка ещё не загружена, выходим
+    if (!card) return;
+    faqRefs.current.forEach((element, index) => {
+      if (element) {
+        element.style.height =
+          openFaq === index ? `${element.scrollHeight}px` : '0px';
+      }
+    });
+  }, [openFaq, card]);
+
+  // Функция переключения FAQ: если кликнули по уже открытому, закрываем его, иначе открываем новый
+  const toggleFaq = (index) => {
+    setOpenFaq((prev) => (prev === index ? null : index));
   };
 
-  const handleAddBasket = () => {
-    BasketApi.addCardInBasket({ _id, count })
-      .then(() => {
-        setMessage('Товар успешно добавлен в корзину!');
-      })
-      .catch((err) => {
-        console.error('Ошибка при добавлении в корзину', err);
-        setMessage('Ошибка при добавлении в корзину');
-      });
+  // Функция открытия popup. При клике передаём объект карточки.
+  const handlePopupOpen = (card) => {
+    setSelectedCard(card);
   };
 
-  const cardСharacteristics = () => {
-    if (typeof card.characteristic === 'string') {
-      return card.characteristic
-        .split(',')
-        .map((characteristic, index) => <p key={index}>{characteristic}</p>);
+  // Функция закрытия popup
+  const handlePopupClose = () => {
+    setSelectedCard(null);
+  };
+
+  // Закрытие popup при клике на overlay
+  function handlePopupCloseClickByOverlay(evt) {
+    if (evt.target.classList.contains('popup')) {
+      handlePopupClose();
     }
-  };
-
-  const cardDescription = () => {
-    if (typeof card.description === 'string') {
-      return card.description.split('.').map((description, index) => (
-        <p key={index} className='card__details_description'>
-          {description}
-        </p>
-      ));
-    }
-  };
-
-  const [offset, setOffset] = React.useState({ x: 0, y: 0 });
-
-  // Функция для обработки движения мыши
-  const handleMouseMove = (event) => {
-    // Получаем размеры окна браузера
-    const { innerWidth, innerHeight } = window;
-
-    // Вычисляем процентное положение курсора по осям X и Y
-    const mouseX = event.clientX / innerWidth;
-    const mouseY = event.clientY / innerHeight;
-
-    // Устанавливаем смещение в пределах от -10 до 10 пикселей
-    const maxOffset = 50; // Максимальное смещение
-    const x = (mouseX - 0.5) * 2 * maxOffset;
-    const y = (mouseY - 0.5) * 2 * maxOffset;
-
-    setOffset({ x, y });
-  };
-
-  function handleMouseLeave() {
-    setOffset({ x: 0, y: 0 });
   }
 
-  return (
-    <div className='card__details'>
-      {card && (
-        <div className='card__details_container'>
-          <div className='card__details_content'>
-            <div className='card__details_image-container'>
-              <img
-                className='card__details_image'
-                src={card.imageSrc}
-                alt={card.name}
-              />
-            </div>
-            <div className='card__details_info'>
-              <h1 className='card__details_name'>{card.name}</h1>
-              <div className='card__details_characteristics'>
-                <h3 className='card__details_characteristics_title'>
-                  Краткие характеристики:
-                </h3>
-                {cardСharacteristics()}
-              </div>
-              <div className='card__details_add-to-basket'>
-                <label className='card__details_label' htmlFor='count'>
-                  Количество тонн:
-                </label>
-                <input
-                  className='card__details_input'
-                  id='count'
-                  type='number'
-                  min='1'
-                  value={count}
-                  onChange={handelChangeCount}
-                />
-                <button
-                  className='card__details_button'
-                  onClick={handleAddBasket}
-                >
-                  Добавить в корзину
-                </button>
-                {message && <p className='card__details_message'>{message}</p>}
-              </div>
-            </div>
-          </div>
-          {/* <p className='card__details_description'>{card.description}</p> */}
-          {cardDescription()}
+  if (error) {
+    return <p className='card-details__error'>{error}</p>;
+  }
 
-          <div
-            className='container'
-            onMouseMove={handleMouseMove} // Отслеживание движения мыши
-            onMouseLeave={handleMouseLeave} // Отслеживание движения мыши
-          >
-            {/* Массив блоков, каждый с индивидуальным смещением */}
-            {[...Array(5)].map((_, index) => (
-              <div
-                key={index}
-                className='block'
-                style={{
-                  transform: `translate(${offset.x}px, ${offset.y}px)`, // Смещение блока
-                }}
-              >
-                Блок {index + 1}
-              </div>
-            ))}
-          </div>
+  if (!card) {
+    return <p>Загрузка...</p>;
+  }
+
+  // Деструктуризация данных карточки
+  const {
+    name,
+    nameDetails,
+    image,
+    installation_price,
+    turnkey_price,
+    specifications = {},
+    colors = {},
+    gate_names = [],
+    advantages = [],
+    faq = [],
+  } = card;
+
+  return (
+    <div className='card-details'>
+      <div className='card-details__container'>
+        <div className='card-details__content'>
+          {/* Блок с изображением карточки */}
+          <CardDetailsImage
+            popupOpen={() => handlePopupOpen(card)}
+            name={name}
+            image={image}
+          />
+
+          {/* Информационный блок */}
+          <CardDetailsInfo
+            nameDetails={nameDetails}
+            installation_price={installation_price}
+            turnkey_price={turnkey_price}
+            specifications={specifications}
+          />
         </div>
-      )}
-      {error && <p className='error'>{error}</p>}
+
+        {/* Список доступных цветов */}
+        <CardDetailsColor colors={colors} />
+
+        {/* Типы ворот */}
+        <CardDetailsGate popupOpen={handlePopupOpen} gateNames={gate_names} />
+
+        {/* Преимущества */}
+        <CardDetailsAdvantages advantages={advantages} />
+
+        {/* FAQ с аккордеоном */}
+        <CardDetailsFAQ
+          faq={faq}
+          openFaq={openFaq}
+          toggleFaq={toggleFaq}
+          faqRefs={faqRefs}
+        />
+      </div>
+      {/* Popup для отображения изображения карточки */}
+      <ImagePopup
+        card={selectedCard}
+        onClose={handlePopupClose}
+        onCloseClickOverlay={handlePopupCloseClickByOverlay}
+      />
     </div>
   );
 }

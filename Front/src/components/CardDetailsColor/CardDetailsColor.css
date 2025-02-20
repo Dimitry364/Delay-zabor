@@ -1,0 +1,34 @@
+.card-details__colors {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-details__colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card-details__color-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+}
+
+.card-details__color-square {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.card-details__color-name {
+  color: #000000;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 400;
+  text-align: center;
+}

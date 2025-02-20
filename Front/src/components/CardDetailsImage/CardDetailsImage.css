@@ -1,0 +1,15 @@
+.card-details__image {
+  width: 560px;
+  height: 420px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.card-details__image:hover {
+  cursor: pointer;
+}
+
+.card-details__image-container {
+  /* можно задать дополнительные отступы или стили, если нужно */
+}

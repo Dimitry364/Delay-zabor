@@ -1,0 +1,38 @@
+.card-details__faq-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.card-details__faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px 20px 0;
+  cursor: pointer;
+}
+
+.card-details__faq-question h4 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 25px;
+}
+
+.card-details__faq-toggle {
+  background: none;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.card-details__faq-answer {
+  max-width: 85%;
+  margin-top: 10px;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #000000;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
