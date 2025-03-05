@@ -1,0 +1,48 @@
+.work-list {
+  display: grid;
+  /* Задаём фиксированную ширину карточки – 373px */
+  grid-template-columns: repeat(auto-fill, minmax(373px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.work-list__item {
+  width: 373px; /* Фиксированная ширина карточки */
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.work-list__item:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.work-list__image {
+  width: 373px; /* Фиксированная ширина изображения */
+  height: 246px; /* Фиксированная высота изображения */
+  object-fit: cover;
+  display: block;
+}
+
+.work-list__name {
+  font-size: 16px;
+  padding: 10px;
+}
+
+/* Адаптивность для очень узких экранов */
+@media (max-width: 400px) {
+  .work-list {
+    grid-template-columns: 1fr;
+  }
+  .work-list__item {
+    width: 100%;
+  }
+  .work-list__image {
+    width: 100%;
+    height: auto;
+  }
+}

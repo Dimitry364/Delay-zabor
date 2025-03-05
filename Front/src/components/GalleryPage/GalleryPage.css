@@ -1,0 +1,22 @@
+.gallery {
+  /* margin: 110px auto 0; */
+  padding: 0;
+}
+
+.gallery__container {
+  margin: 140px auto 0;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 85vh;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+.gallery__title {
+  text-align: left;
+  font-size: 52px;
+  line-height: 64px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 20px;
+}

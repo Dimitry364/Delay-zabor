@@ -1,0 +1,33 @@
+.our-works {
+  max-width: 1200px;
+  margin: 150px auto;
+}
+
+.our-works__title {
+  font-size: 52px;
+  line-height: 64px;
+  font-weight: 700;
+  color: #000000;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.our-works__button {
+  display: block;
+  width: 236px;
+  height: 60px;
+  line-height: 60px;
+  font-weight: 700;
+  color: #2d3051;
+  background-color: #ffe522;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  margin: 20px auto; /* Центрирование кнопки */
+  transition: 0.3s ease;
+}
+
+.our-works__button:hover {
+  background-color: #ffb800;
+}

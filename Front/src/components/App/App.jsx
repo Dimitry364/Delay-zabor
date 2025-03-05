@@ -4,9 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import CardDetails from '../CardDetails/CardDetails';
-// import Footer from '../Footer/Footer';
-// import Basket from '../Basket/Basket';
-// import PopupCardOrder from '../PopupCardOrder/PopupCardOrder';
+import GalleryPage from '../GalleryPage/GalleryPage';
+import AboutDetails from '../AboutDetails/AboutDetails';
 
 function App() {
   return (
@@ -15,15 +14,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/card/:_id' element={<CardDetails />}></Route>
-        {/* <Route path='/basket' element={<Basket />}></Route> */}
+        <Route path='/gallery' element={<GalleryPage />}></Route>
+        <Route path='/about-details' element={<AboutDetails />}></Route>
       </Routes>
-      {/* <Footer />  */}
-      {/* <PopupCardOrder
-        cardName={selectedCard?.name}
-        cardCount={selectedCard?.count}
-        onClose={handlePopupClose}
-        isPopupOpen={isPopupOpen}
-      /> */}
     </div>
   );
 }

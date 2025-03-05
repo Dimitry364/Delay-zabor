@@ -1,0 +1,61 @@
+.about-details {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-details__part {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding: 20px;
+}
+
+.about-details__part--first .about-details__text {
+  flex: 1;
+  text-align: left;
+}
+
+.about-details__part--first .about-details__image-container {
+  flex: 1;
+  text-align: right;
+}
+
+/* Вторая часть: перевёрнутое расположение – изображение слева, текст и кнопка справа */
+.about-details__part--second {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.about-details__part--second .about-details__image-container {
+  flex: 1;
+  text-align: left;
+}
+
+.about-details__part--second .about-details__text {
+  flex: 1;
+  text-align: right;
+}
+
+.about-details__title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.about-details__subtitle {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.about-details__button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #28a745;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}

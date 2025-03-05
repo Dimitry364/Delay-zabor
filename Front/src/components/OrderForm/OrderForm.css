@@ -1,0 +1,135 @@
+/* Основной блок формы */
+.order-form {
+  /* min-height: 100vh; */
+  padding: 40px 20px;
+  background-color: #2d3051;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Контейнер с фиксированной минимальной шириной */
+.order-form__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Заголовок */
+.order-form__title-container {
+  margin-bottom: 75px;
+}
+
+.order-form__title {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 55px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.order-form__title--highlight {
+  color: rgb(255, 229, 34);
+}
+
+/* Подзаголовок */
+.order-form__subtitle {
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Форма */
+.order-form__form {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+/* Поля ввода */
+.order-form__input {
+  width: 430px;
+  height: 60px;
+  padding: 0 20px;
+  margin: 0 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.33;
+  background-color: transparent;
+  color: rgb(200, 203, 217);
+  transition: border 0.3s ease;
+}
+
+.order-form__input--error {
+  border: 1px solid #f44336;
+}
+
+/* Кнопка */
+.order-form__button {
+  width: 260px;
+  height: 60px;
+  background-color: rgb(255, 229, 34);
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.order-form__button:hover {
+  background-color: #e6b800;
+}
+
+/* Сообщения */
+.order-form__message {
+  padding: 12px;
+  margin-top: 15px;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.order-form__message--error {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.order-form__message--success {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+/* Текст о согласии */
+.order-form__consent {
+  font-size: 14px;
+  margin-top: 20px;
+  text-align: left;
+  line-height: 22px;
+  color: rgb(200, 203, 217);
+}
+
+/* Адаптивность */
+@media (max-width: 1300px) {
+  .order-form__container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .order-form__title {
+    font-size: 32px;
+    line-height: 36px;
+  }
+  .order-form__subtitle {
+    font-size: 14px;
+  }
+  .order-form__button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

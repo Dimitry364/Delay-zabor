@@ -10,6 +10,10 @@
   background-color: rgb(45, 48, 81);
 }
 
+/* .header_white {
+  background-color: #fff;
+} */
+
 .header__container {
   min-width: 1200px;
   padding: 20px 0;
@@ -36,7 +40,7 @@
   transition: opacity 0.2s linear;
 }
 
-.header__link-phone {
+.header__link .header__link-phone {
   font-size: 18px;
 }
 

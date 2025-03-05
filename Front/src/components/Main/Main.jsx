@@ -2,8 +2,11 @@ import React from 'react';
 import CardApi from '../utils/CardsApi';
 import CardList from '../CardList/CardList';
 import Promo from '../Promo/Promo';
+import OrderForm from '../OrderForm/OrderForm';
+import OurWorks from '../OurWorks/OurWorks';
+import About from '../About/About';
 
-function Main({ onOrderClick }) {
+function Main() {
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
@@ -20,7 +23,22 @@ function Main({ onOrderClick }) {
   return (
     <main className='main'>
       <Promo />
-      <CardList cards={cards} onOrderClick={onOrderClick} />
+      <CardList cards={cards} />
+      <OrderForm
+        title={
+          <>
+            Закажи установку забора
+            <br />
+            сейчас и{' '}
+            <span className='order-form__title--highlight'>
+              получи скидку 5%
+            </span>
+          </>
+        }
+      />
+      <OurWorks cards={cards} />
+      <About />
+      <OrderForm title='Остались вопросы?' />
     </main>
   );
 }

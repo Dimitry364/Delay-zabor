@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../images/header/logoDark.svg';
 import './Header.css';
 
 function Header() {
+  const { pathname } = useLocation();
   return (
-    <header className='header'>
+    <header className={`header ${pathname !== '/' && 'header_white'}`}>
       <div className='header__container'>
         <Link to='/' className='header__link-logo'>
           <img
