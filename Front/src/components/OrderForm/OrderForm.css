@@ -107,10 +107,11 @@
 /* Текст о согласии */
 .order-form__consent {
   font-size: 14px;
+  font-weight: 400;
   margin-top: 20px;
   text-align: left;
-  line-height: 22px;
-  color: rgb(200, 203, 217);
+  line-height: 1.55;
+  color: #ccc;
 }
 
 /* Адаптивность */

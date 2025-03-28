@@ -31,10 +31,7 @@ class CardApi {
 
 const cardApi = new CardApi({
   baseUrl: 'http://localhost:7007',
-  // baseUrl: 'https://192.168.0.11:7007',
   headers: {
-    accept: '*',
-    // Authorization: `Bearer ${localStorage.getItem('jwt')}`,
     'Content-Type': 'application/json',
   },
 });

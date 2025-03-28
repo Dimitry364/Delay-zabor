@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import WorkList from '../WorkList/WorkList';
 import ImagePopup from '../ImagePopup/ImagePopup';
+import { CardsContext } from '../Context/CardsContext';
 import './OurWorks.css';
 
-function OurWorks({ cards }) {
+function OurWorks() {
+  const { cards } = useContext(CardsContext);
+
   const displayedCards = cards.slice(0, 6);
 
   const [selectedCard, setSelectedCard] = React.useState(null);

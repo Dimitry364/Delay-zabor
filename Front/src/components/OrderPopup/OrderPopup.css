@@ -1,0 +1,213 @@
+/* Общий контейнер попапа */
+.order-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none; /* По умолчанию скрыт */
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Модификатор для видимого попапа */
+.order-popup_opened {
+  display: flex;
+}
+
+/* Анимация появления (опционально) */
+.order-popup_opened .order-popup__container {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Контейнер для содержимого */
+.order-popup__container {
+  position: relative;
+  max-width: 560px;
+  width: calc(100% - 40px);
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 40px 45px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  opacity: 0; /* Для анимации */
+}
+
+/* Кнопка закрытия (крестик) */
+.order-popup__cancel-button {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: -40px;
+  right: -40px;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('../../images/popup/CloseIcon.svg');
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+.order-popup__cancel-button:hover {
+  opacity: 0.8;
+}
+
+/* Заголовок и подзаголовок */
+.order-popup__title {
+  margin: 0 0 11px;
+  margin-bottom: 11px;
+  font-size: 36px;
+  line-height: 1.23;
+  font-weight: 700;
+  text-align: center;
+  color: #000;
+}
+
+.order-popup__subtitle {
+  margin: 0 0 24px;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.55;
+  color: #000;
+}
+
+/* Форма и её поля */
+.order-popup__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.order-popup__fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Метка и поля ввода */
+.order-popup__label {
+  display: flex;
+  margin-bottom: 25px;
+  gap: 5px;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #000;
+}
+
+/* Стили инпутов и select */
+.order-popup__input {
+  margin-top: 8px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  width: 100%;
+}
+
+.order-popup__input::placeholder {
+  color: #999; /* Немного затемнённый placeholder */
+}
+
+.order-popup__input:focus {
+  border-color: #ffe522; /* Подсветка границы */
+  background-color: #fffceb; /* Лёгкий оттенок */
+}
+
+/* Красная рамка при ошибке */
+.order-popup__input_error {
+  border-color: red;
+}
+
+/* Текст ошибки */
+.order-popup__error {
+  margin-top: 4px;
+  color: red;
+  font-size: 14px;
+}
+
+/* Кнопка отправки - по центру и на всю ширину */
+.order-popup__submit-button {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+  border: none;
+  border-radius: 8px; /* Чуть более скруглённая кнопка */
+  background-color: #ffe522;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d3051;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.order-popup__submit-button:hover {
+  background-color: #e6b800;
+}
+
+/* Сообщение о результате (успех / ошибка) */
+.order-popup__message {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+@media screen and (max-width: 1279px) {
+  /* Плавная адаптация контейнера попапа */
+  .order-popup__container {
+    /* Интерполируем ширину от 320px (на 320px экране) до 560px (на 1279px экране) */
+    width: calc((100vw - 320px) / (1279 - 320) * (560 - 320) + 320px);
+    /* Padding по горизонтали от 16px до 32px, по вертикали от 20px до 40px */
+    padding: calc((100vw - 320px) / (1279 - 320) * (40 - 20) + 20px)
+      calc((100vw - 320px) / (1279 - 320) * (32 - 16) + 16px);
+  }
+
+  /* Интерполяция размера заголовка */
+  .order-popup__title {
+    /* Например, от 28px на маленьких экранах до 36px на 1279px */
+    font-size: calc((100vw - 320px) / (1279 - 320) * (36 - 28) + 28px);
+  }
+
+  /* Интерполяция размера шрифта меток */
+  .order-popup__label {
+    /* От 16px до 20px */
+    font-size: calc((100vw - 320px) / (1279 - 320) * (20 - 16) + 16px);
+  }
+
+  /* Интерполяция размера шрифта и padding для инпутов и селекта */
+  .order-popup__input {
+    font-size: calc((100vw - 320px) / (1279 - 320) * (20 - 16) + 16px);
+    padding: calc((100vw - 320px) / (1279 - 320) * (20 - 14) + 14px);
+  }
+
+  /* Интерполяция для кнопки отправки */
+  .order-popup__submit-button {
+    font-size: calc((100vw - 320px) / (1279 - 320) * (18 - 14) + 14px);
+    padding: calc((100vw - 320px) / (1279 - 320) * (16 - 12) + 12px);
+  }
+}
+
+@media (max-width: 500px) {
+  .order-popup__cancel-button {
+    top: -50px;
+    right: 0px;
+  }
+}

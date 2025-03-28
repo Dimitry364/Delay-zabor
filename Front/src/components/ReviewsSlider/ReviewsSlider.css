@@ -1,0 +1,154 @@
+.reviews-slider {
+  position: relative;
+  max-width: 100%; /* контейнер может растягиваться на всю ширину родителя */
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+.reviews-slider__viewport {
+  overflow: hidden;
+}
+
+/* Видимая область слайдов */
+.reviews-slider__track {
+  display: flex;
+  transition: transform 0.5s ease;
+  /* ширина трека автоматически определяется содержимым (flex-items) */
+}
+.reviews-slider__slide {
+  flex: 0 0 100%; /* по умолчанию один слайд = 100% ширины контейнера (мобильный) */
+  box-sizing: border-box;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 0 10px; /* небольшой внешний отступ между слайдами */
+  text-align: center;
+}
+.reviews-slider__text {
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.reviews-slider__author {
+  font-weight: bold;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Навигационные стрелки */
+.reviews-slider__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(0, 0, 0, 0.1);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  padding: 0;
+}
+.reviews-slider__arrow--left {
+  left: 10px;
+}
+.reviews-slider__arrow--right {
+  right: 10px;
+}
+.reviews-slider__arrow img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Нижний блок с кнопками */
+.reviews-slider__footer {
+  margin-top: 15px;
+  text-align: center;
+}
+.reviews-slider__button {
+  font-size: 14px;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: 1px solid #007bff;
+  border-radius: 3px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none; /* для ссылки "Подробнее" */
+}
+.reviews-slider__button--more {
+  background: #fff;
+  color: #007bff;
+}
+
+/* Попап с формой отзыва */
+.reviews-slider__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.reviews-slider__popup {
+  background: #fff;
+  padding: 20px;
+  width: 300px;
+  max-width: 90%;
+  border-radius: 5px;
+  position: relative;
+}
+.reviews-slider__close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+.reviews-slider__form {
+  display: flex;
+  flex-direction: column;
+}
+.reviews-slider__form-title {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.reviews-slider__input,
+.reviews-slider__textarea {
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.reviews-slider__textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+.reviews-slider__submit {
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  background: #28a745;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Медиа-правила для адаптивности */
+@media (min-width: 768px) {
+  .reviews-slider__slide {
+    flex: 0 0 50%; /* 2 слайда рядом на ширине планшета */
+  }
+}
+@media (min-width: 1024px) {
+  .reviews-slider__slide {
+    flex: 0 0 33.333%; /* 3 слайда рядом на ширине десктопа */
+  }
+}

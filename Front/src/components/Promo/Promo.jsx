@@ -1,72 +1,45 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
 import './Promo.css';
 import consultation from '../../images/promo/Group-2.png';
 import measuring from '../../images/promo/Group-3.png';
 import brigade from '../../images/promo/Group.png';
 import acceptance from '../../images/promo/Group-1.png';
+import FenceLinks from '../FenceLinks/FenceLinks';
+import { OrderPopupContext } from '../Context/OrderPopupContext';
+import { CardsContext } from '../Context/CardsContext';
 
 function Promo() {
+  const { openOrderPopup } = useContext(OrderPopupContext);
+  const { cards } = useContext(CardsContext);
+
+  console.log('openOrderPopup:', openOrderPopup);
   return (
     <section className='promo'>
       <div className='promo__container'>
         <div className='promo__content'>
           <div className='promo__info'>
             <div className='promo__title-wrapper'>
-              <h1 className='promo__title'>
-                Изготовление <br />
-                заборов под ключ
-              </h1>
+              <h1 className='promo__title'>Изготовление заборов под ключ</h1>
               <div className='promo__query'>
                 <h2 className='promo__subtitle'>
-                  В Новосибирске <br />и Новосибирской области
+                  В Новосибирске и Новосибирской области
                 </h2>
-                <button className='promo__button-query'>Оставить заявку</button>
+                <button
+                  className='promo__button-query'
+                  onClick={openOrderPopup}
+                >
+                  Оставить заявку
+                </button>
               </div>
             </div>
           </div>
           <div className='promo__list-container'>
             <ul className='promo__list'>
-              <li className='promo__list-item'>
-                <Link to='/profile-pipe' className='promo__link'>
-                  из профтрубы
-                </Link>
-              </li>
-              <li className='promo__list-item'>
-                <Link to='/profile-sheet' className='promo__link'>
-                  из профнастила
-                </Link>
-              </li>
-              <li className='promo__list-item'>
-                <Link to='/chain-link-fence' className='promo__link'>
-                  из сетки рабица
-                </Link>
-              </li>
-              <li className='promo__list-item'>
-                <Link to='/forged-fence' className='promo__link'>
-                  забор ковкой
-                </Link>
-              </li>
-              <li className='promo__list-item'>
-                <Link to='/3d-fence' className='promo__link'>
-                  забор 3D
-                </Link>
-              </li>
-              <li className='promo__list-item'>
-                <Link to='/polycarbonate-fence' className='promo__link'>
-                  из поликарбоната
-                </Link>
-              </li>
-              <li className='promo__list-item'>
-                <Link to='/euro-shtaketnik' className='promo__link'>
-                  из евроштакетника
-                </Link>
-              </li>
-              <li className='promo__list-item'>
-                <Link to='/turnkey' className='promo__link'>
-                  под ключ
-                </Link>
-              </li>
+              <FenceLinks
+                cards={cards}
+                linkClassName='promo__link'
+                ListClassName='promo__list-item'
+              />
             </ul>
           </div>
         </div>
@@ -84,33 +57,25 @@ function Promo() {
               />
               <strong className='promo__steps-strong'>Консультация</strong>
               <p className='promo__steps-paragraph'>
-                Подберем решение&nbsp;под ваши
-                <br />
-                потребности,&nbsp;расскажем
-                <br />
-                подробности,&nbsp;посчитаем
-                <br />
-                итоговую стоимость.
+                Подберем решениепод ваши потребности, расскажем
+                подробности, посчитаем итоговую стоимость.
               </p>
             </li>
             <li className='promo__steps-item'>
               <img src={measuring} alt='Замер' className='promo__steps-icon' />
+              {/* <div className='promo__steps-text'> */}
               <strong className='promo__steps-strong'>Замер</strong>
               <p className='promo__steps-paragraph'>
-                Произведем замеры, <br />
-                составим смету и&nbsp;оформим <br />
-                договор.
+                Произведем замеры, составим смету и оформим договор.
               </p>
+              {/* </div> */}
             </li>
             <li className='promo__steps-item'>
               <img src={brigade} alt='Монтаж' className='promo__steps-icon' />
               <strong className='promo__steps-strong'>Монтаж</strong>
               <p className='promo__steps-paragraph'>
-                Бригада профессионалов
-                <br />
-                возведет забор вокруг участка
-                <br />
-                в&nbsp;установленные сроки.
+                Бригада профессионалов возведет забор вокруг участка
+                в установленные сроки.
               </p>
             </li>
             <li className='promo__steps-item'>
@@ -121,11 +86,8 @@ function Promo() {
               />
               <strong className='promo__steps-strong'>Прием работ</strong>
               <p className='promo__steps-paragraph'>
-                Производим финишные
-                <br />
-                работы и&nbsp;уборку территории.
-                <br />
-                Ваш забор готов!
+                Производим финишные работы и уборку территории. Ваш забор
+                готов!
               </p>
             </li>
           </ul>

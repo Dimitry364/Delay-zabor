@@ -4,7 +4,7 @@
 }
 
 .gallery__container {
-  margin: 140px auto 0;
+  margin: 140px auto 105px;
   width: 100%;
   max-width: 1200px;
   min-height: 85vh;

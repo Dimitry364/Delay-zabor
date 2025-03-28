@@ -16,6 +16,7 @@ function CardDetails() {
   const [card, setCard] = useState(null);
   const [error, setError] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
+
   // Состояние для открытого FAQ: храним индекс открытого вопроса или null (если ни один не открыт)
   const [openFaq, setOpenFaq] = useState(null);
 

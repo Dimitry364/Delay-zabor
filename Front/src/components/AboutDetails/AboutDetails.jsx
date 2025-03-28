@@ -1,6 +1,6 @@
 import React from 'react';
 import AboutList from '../AboutList/AboutList';
-// import OurWorks from '../OurWorks/OurWorks';
+import OurWorks from '../OurWorks/OurWorks';
 import CardApi from '../utils/CardsApi';
 import OrderForm from '../OrderForm/OrderForm';
 import './AboutDetails.css';
@@ -21,9 +21,10 @@ function AboutDetails() {
 
   return (
     <section className='about-details'>
-      <AboutList />
-      <button className='about-details__button'>Отправить заявку</button>
-      {/* <OurWorks cards={cards} /> */}
+      <div className='about-details__container'>
+        <AboutList />
+      </div>
+      <OurWorks cards={cards} />
       <OrderForm title={'Остались вопросы?'} />
     </section>
   );

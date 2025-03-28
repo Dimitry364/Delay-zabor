@@ -1,50 +1,5 @@
-/* About.css */
 .about {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-}
-
-.about__content {
-  display: flex;
-  align-items: center;
   max-width: 1200px;
   width: 100%;
-}
-
-.about__text {
-  flex: 1;
-  text-align: left;
-}
-
-.about__title {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.about__subtitle {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.about__button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #007bff;
-  border: none;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.about__image-container {
-  flex: 1;
-  text-align: right;
-}
-
-.about__image {
-  max-width: 100%;
-  height: auto;
+  margin: 105px auto 150px;
 }

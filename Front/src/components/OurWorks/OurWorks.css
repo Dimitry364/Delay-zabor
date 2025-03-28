@@ -24,10 +24,56 @@
   border-radius: 5px;
   text-decoration: none;
   text-align: center;
-  margin: 20px auto; /* Центрирование кнопки */
+  margin: 30px auto;
   transition: 0.3s ease;
 }
 
 .our-works__button:hover {
   background-color: #ffb800;
+}
+
+@media screen and (max-width: 980px) {
+  .our-works {
+    width: 100%;
+    padding: 0 20px;
+    margin: calc((100vw - 320px) / (980 - 320) * (150 - 80) + 80px) auto;
+  }
+
+  .work-list {
+    display: grid;
+    justify-content: center; /* Центровка карточек */
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(calc((100vw - 320px) / (980 - 320) * (373 - 127) + 127px), 1fr)
+    );
+    gap: 16px;
+  }
+
+  .work-list__item,
+  .work-list__image {
+    width: 100%;
+    max-width: 373px;
+    height: auto;
+    aspect-ratio: 3 / 2; /* Удерживает пропорции */
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .our-works__title {
+    font-size: calc((100vw - 320px) / (980 - 320) * (52 - 32) + 32px);
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .our-works__button {
+    width: 100%;
+    max-width: 280px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 32px auto 0;
+    border-radius: 6px;
+  }
 }

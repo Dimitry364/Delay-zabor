@@ -1,3 +1,5 @@
+import React, { useContext } from 'react';
+import { OrderPopupContext } from '../Context/OrderPopupContext';
 import './CardDetailsInfo.css';
 
 function CardDetailsInfo({
@@ -6,6 +8,8 @@ function CardDetailsInfo({
   turnkey_price,
   specifications,
 }) {
+  const { openOrderPopup } = useContext(OrderPopupContext);
+
   return (
     <div className='card-details__info'>
       <h1 className='card-details__name'>
@@ -74,7 +78,9 @@ function CardDetailsInfo({
           <strong>Цена под ключ:</strong> {turnkey_price}
         </p>
       </section>
-      <button className='card-details__button-send'>Отправить заявку</button>
+      <button className='card-details__button-send' onClick={openOrderPopup}>
+        Отправить заявку
+      </button>
     </div>
   );
 }

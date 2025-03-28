@@ -1,29 +1,17 @@
 import React from 'react';
-import CardApi from '../utils/CardsApi';
 import CardList from '../CardList/CardList';
 import Promo from '../Promo/Promo';
 import OrderForm from '../OrderForm/OrderForm';
 import OurWorks from '../OurWorks/OurWorks';
+
 import About from '../About/About';
+// import ReviewsSlider from '../ReviewsSlider/ReviewsSlider';
 
 function Main() {
-  const [cards, setCards] = React.useState([]);
-
-  React.useEffect(() => {
-    CardApi.getInitialCards()
-      .then((cardsData) => {
-        setCards(cardsData);
-      })
-      .catch((err) => {
-        console.log('Ошибка в получении карточки');
-        console.error(err);
-      });
-  }, []);
-
   return (
     <main className='main'>
       <Promo />
-      <CardList cards={cards} />
+      <CardList />
       <OrderForm
         title={
           <>
@@ -36,8 +24,9 @@ function Main() {
           </>
         }
       />
-      <OurWorks cards={cards} />
+      <OurWorks />
       <About />
+      {/* <ReviewsSlider /> */}
       <OrderForm title='Остались вопросы?' />
     </main>
   );
