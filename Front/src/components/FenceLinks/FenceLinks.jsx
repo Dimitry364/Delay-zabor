@@ -7,7 +7,7 @@ function FenceLinks({ ListClassName = '', linkClassName = '', cards = [] }) {
       {cards.map((card) => (
         <li key={card.id} className={ListClassName}>
           <Link
-            to={`/card/${card.id}`}
+            to={`/card/${card._id}`}
             className={linkClassName}
             target='_blank'
             rel='noopener noreferrer'

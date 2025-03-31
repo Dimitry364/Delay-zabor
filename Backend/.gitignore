@@ -1,0 +1,16 @@
+# dependencies
+/node_modules
+
+# environment variables
+.env
+
+# logs
+logs
+*.log
+
+# database dumps
+dump/
+*.local
+
+# OS files
+.DS_Store

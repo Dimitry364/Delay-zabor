@@ -1,19 +1,35 @@
-const http = require('http');
+// server.js
+import dotenv from 'dotenv';
+dotenv.config();
 
-const server = http.createServer((req, res) => {
-  console.log(req.url); // /hello
-  console.log(req.method); // GET
-  console.log(req.headers); // здесь будут заголовки запроса
-  console.log(req.body); // а здесь тело запроса, но у GET запроса его нет
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 
-  res.statusCode = 200; // статус ответа
-  res.statusMessage = 'OK'; // сообщение ответа
-  res.setHeader('Content-Type', 'text/plain'); // добавить ответу заголовок
+import cardsRouter from './routes/cards.js';
+import reviewsRouter from './routes/reviews.js';
+import orderRouter from './routes/order.js';
+import mongoose from 'mongoose';
 
-  res.write('Hello, '); // отправить часть ответа — строку "Hello, "
-  res.write('world!'); // отправить часть ответа — строку "world!"
+const app = express();
+const PORT = process.env.PORT || 7007;
 
-  res.end(); // закончить отправку ответа
+app.use(cors());
+app.use(bodyParser.json());
+
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('✅ MongoDB подключена'))
+  .catch((err) => console.error('❌ Ошибка подключения MongoDB:', err));
+
+// Роуты
+app.use('/cards', cardsRouter);
+app.use('/reviews', reviewsRouter);
+app.use('/order', orderRouter);
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-server.listen(3009);
