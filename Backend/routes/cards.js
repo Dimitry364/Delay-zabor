@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 });
 
 // Получить одну карточку по ID
-router.get('/:id', async (req, res) => {
+router.get('/:_id', async (req, res) => {
   try {
     const card = await Card.findById(req.params.id);
     if (!card) return res.status(404).json({ error: 'Карточка не найдена' });

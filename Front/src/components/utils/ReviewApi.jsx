@@ -30,7 +30,7 @@ class ReviewApi {
 }
 
 const reviewApi = new ReviewApi({
-  baseUrl: 'http://localhost:7007',
+  baseUrl: 'http://api.delay-zabor.nomoredomainsmonster.ru',
   headers: {
     'Content-Type': 'application/json',
   },
