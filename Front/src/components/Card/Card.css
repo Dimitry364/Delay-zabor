@@ -60,7 +60,8 @@
   width: 100%;
   max-width: 220px;
   height: clamp(44px, 10vw, 52px);
-  margin: clamp(8px, 2vw, 12px) auto;
+  /* margin: clamp(8px, 2vw, 12px) auto; */
+  margin: 12px auto calc((100vw - 320px) / (1279 - 320) * (12 - 20) + 20px);
   background-color: #ffe522;
   color: #2d3051;
   font-size: clamp(14px, 4vw, 16px);
