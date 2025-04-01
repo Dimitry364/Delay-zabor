@@ -1,0 +1,134 @@
+.mobile-menu {
+  display: none;
+}
+
+.mobile-menu_open {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0;
+  background-color: #2d3051;
+  z-index: 300;
+}
+
+.mobile-menu__header {
+  width: 91%;
+  border-bottom: 1px solid #706d6d;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(6px, 2vw, 36px);
+  box-sizing: border-box;
+}
+
+.mobile-menu__logo {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 2vw, 12px);
+  text-decoration: none;
+}
+
+.mobile-menu__image-logo {
+  width: clamp(30px, 6.3vw, 50px);
+  height: clamp(30px, 6.3vw, 50px);
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu__image-logo:hover {
+  opacity: 0.7;
+}
+
+.mobile-menu__name-company {
+  font-size: clamp(14px, 3vw, 22px);
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu__name-company:hover {
+  opacity: 0.7;
+}
+
+.mobile-menu__burger-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.mobile-menu__phone-icon {
+  width: 27px;
+  height: 27px;
+}
+
+.mobile-menu__close {
+  width: 27px;
+  height: 27px;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('../../images/popup/CloseIcon.svg');
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.mobile-menu__close:hover {
+  opacity: 0.7;
+}
+
+.mobile-menu__content {
+  margin: 16px 0 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mobile-menu__section {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 24px 0 24px;
+  border-bottom: 1px solid rgb(95, 99, 147);
+}
+
+.mobile-menu__section:last-child {
+  border-bottom: none;
+  padding: 0;
+}
+
+.mobile-menu__title {
+  margin: 0;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29px;
+  text-decoration: none;
+}
+
+.mobile-menu__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-menu__link {
+  color: rgb(238, 238, 238);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 140%;
+  text-decoration: none;
+}
+
+.mobile-menu__link:hover,
+.mobile-menu__title_link:hover {
+  color: #ffe522;
+}

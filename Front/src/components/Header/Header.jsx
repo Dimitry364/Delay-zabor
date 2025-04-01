@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/header/logoDark.svg';
+import phoneIcon from '../../images/header/phone-icon.svg';
 import FenceLinks from '../FenceLinks/FenceLinks';
 import { OrderPopupContext } from '../Context/OrderPopupContext';
 import { CardsContext } from '../Context/CardsContext';
 import './Header.css';
+import MobileMenu from '../MobileMenu/MobileMenu';
 
 function Header() {
   const { openOrderPopup } = useContext(OrderPopupContext);
@@ -12,7 +14,6 @@ function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <header className='header'>
@@ -46,78 +47,47 @@ function Header() {
             Контакты
           </Link>
         </div>
+        <Link to='tel:+73833181026' className='header__link-phone'>
+          <img
+            className='header__link-phone-icon header__link'
+            src={phoneIcon}
+            alt='Иконка телефона'
+          />
+          <p className='header__link-phone-number header__link'>
+            +7 (383) 318 10 26
+          </p>
+        </Link>
 
-        <a className='header__link-phone header__link' href='tel:+73833181026'>
-          +7 (383) 318 10 26
-        </a>
         <button className='header_button-query' onClick={openOrderPopup}>
           Оставить заявку
         </button>
 
         {/* Только бургер-кнопка */}
-        <button
-          className='header__burger'
-          onClick={toggleMobileMenu}
-          aria-label='Меню'
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <div className='header__burger-container'>
+          <Link to='tel:+73833181026' className='header__link-b'>
+            <img
+              className='header__link-phone-icon-burger header__link'
+              src={phoneIcon}
+              alt='Иконка телефона'
+            />
+          </Link>
+          <button
+            className='header__burger'
+            onClick={toggleMobileMenu}
+            aria-label='Меню'
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
 
-      {/* Только мобильное меню */}
-      <div
-        className={`header__mobile-menu ${
-          isMobileMenuOpen ? 'header__mobile-menu_open' : ''
-        }`}
-      >
-        <button className='header__mobile-close' onClick={closeMobileMenu}>
-          &times;
-        </button>
-        <ul className='header__mobile-list'>
-          <FenceLinks cards={cards} linkClassName='header__menu-link' />
-          <li>
-            <Link
-              to='/gallery'
-              className='header__menu-link'
-              onClick={closeMobileMenu}
-            >
-              Наши работы
-            </Link>
-          </li>
-          <li>
-            <Link
-              to='/about-details'
-              className='header__menu-link'
-              onClick={closeMobileMenu}
-            >
-              О нас
-            </Link>
-          </li>
-          <li>
-            <Link
-              to='/contacts'
-              className='header__menu-link'
-              onClick={closeMobileMenu}
-            >
-              Контакты
-            </Link>
-          </li>
-        </ul>
-        <a href='tel:+73833181026' className='header__menu-phone'>
-          +7 (383) 318 10 26
-        </a>
-        <button
-          className='header__menu-button'
-          onClick={() => {
-            openOrderPopup();
-            closeMobileMenu();
-          }}
-        >
-          Оставить заявку
-        </button>
-      </div>
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        cards={cards}
+      />
     </header>
   );
 }

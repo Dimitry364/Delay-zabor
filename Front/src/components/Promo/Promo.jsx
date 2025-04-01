@@ -7,6 +7,7 @@ import acceptance from '../../images/promo/Group-1.png';
 import FenceLinks from '../FenceLinks/FenceLinks';
 import { OrderPopupContext } from '../Context/OrderPopupContext';
 import { CardsContext } from '../Context/CardsContext';
+import PromoImage from '../../images/promo/shutterstock_2065336.png';
 
 function Promo() {
   const { openOrderPopup } = useContext(OrderPopupContext);
@@ -19,10 +20,15 @@ function Promo() {
         <div className='promo__content'>
           <div className='promo__info'>
             <div className='promo__title-wrapper'>
-              <h1 className='promo__title'>Изготовление заборов под ключ</h1>
+              <h1 className='promo__title'>
+                Изготовление
+                <br /> заборов под ключ
+              </h1>
               <div className='promo__query'>
                 <h2 className='promo__subtitle'>
-                  В Новосибирске и Новосибирской области
+                  В&nbsp;Новосибирске
+                  <br />
+                  и&nbsp;Новосибирской&nbsp;области
                 </h2>
                 <button
                   className='promo__button-query'
@@ -43,7 +49,13 @@ function Promo() {
             </ul>
           </div>
         </div>
-        <div className='promo__image' title='Изображение забора'></div>
+        <div className='promo__image' title='Изображение забора'>
+          <img
+            src={PromoImage}
+            alt='Фото забора'
+            className='promo__image-item'
+          />
+        </div>
 
         {/* Новый блок "Этапы работы" */}
         <div className='promo__steps'>
@@ -57,8 +69,8 @@ function Promo() {
               />
               <strong className='promo__steps-strong'>Консультация</strong>
               <p className='promo__steps-paragraph'>
-                Подберем решениепод ваши потребности, расскажем
-                подробности, посчитаем итоговую стоимость.
+                Подберем решениепод ваши потребности, расскажем подробности,
+                посчитаем итоговую стоимость.
               </p>
             </li>
             <li className='promo__steps-item'>
@@ -74,8 +86,8 @@ function Promo() {
               <img src={brigade} alt='Монтаж' className='promo__steps-icon' />
               <strong className='promo__steps-strong'>Монтаж</strong>
               <p className='promo__steps-paragraph'>
-                Бригада профессионалов возведет забор вокруг участка
-                в установленные сроки.
+                Бригада профессионалов возведет забор вокруг участка в
+                установленные сроки.
               </p>
             </li>
             <li className='promo__steps-item'>
@@ -86,8 +98,7 @@ function Promo() {
               />
               <strong className='promo__steps-strong'>Прием работ</strong>
               <p className='promo__steps-paragraph'>
-                Производим финишные работы и уборку территории. Ваш забор
-                готов!
+                Производим финишные работы и уборку территории. Ваш забор готов!
               </p>
             </li>
           </ul>

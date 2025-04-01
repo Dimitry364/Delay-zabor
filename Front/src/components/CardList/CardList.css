@@ -1,21 +1,24 @@
 .cards {
   max-width: 1200px;
-  margin: 137px auto 134px;
-  padding: 0 20px;
+  margin: clamp(40px, 10vw, 137px) auto clamp(60px, 8vw, 134px);
+  padding: 0 clamp(16px, 4vw, 20px);
 }
 
 .cards__fence {
-  margin: 0 0 30px;
+  margin: 0 0 clamp(24px, 5vw, 30px);
   color: rgb(33, 33, 33);
-  font-size: 52px;
+  font-size: clamp(28px, 5vw, 52px);
   font-weight: 700;
-  line-height: 71px;
+  line-height: clamp(36px, 6vw, 71px);
 }
 
 .cards__list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(clamp(240px, 45vw, 270px), 1fr)
+  );
+  gap: clamp(16px, 4vw, 20px);
   list-style: none;
   padding: 0;
   margin: 0 auto;

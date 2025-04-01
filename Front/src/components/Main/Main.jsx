@@ -15,9 +15,7 @@ function Main() {
       <OrderForm
         title={
           <>
-            Закажи установку забора
-            <br />
-            сейчас и{' '}
+            Закажи установку забора сейчас и{' '}
             <span className='order-form__title--highlight'>
               получи скидку 5%
             </span>

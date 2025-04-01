@@ -10,7 +10,7 @@
 
 /* Контейнер */
 .header__container {
-  width: 95%;
+  width: 91%;
   border-bottom: 1px solid #706d6d;
   max-width: 1200px;
   margin: 0 auto;
@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(10px, 2vw, 36px);
+  gap: clamp(6px, 2vw, 36px);
   box-sizing: border-box;
 }
 
@@ -31,16 +31,26 @@
 }
 
 .header__image-logo {
-  width: clamp(50px, 8vw, 43px);
-  height: clamp(50px, 8vw, 43px);
+  width: clamp(30px, 6.3vw, 50px);
+  height: clamp(30px, 6.3vw, 50px);
+  transition: opacity 0.3s ease;
+}
+
+.header__image-logo:hover {
+  opacity: 0.7;
 }
 
 .header__name-company {
-  font-size: clamp(21px, 4vw, 20px);
+  font-size: clamp(14px, 3vw, 22px);
   font-weight: 700;
   line-height: 1;
-  color: white;
+  color: #fff;
   margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+.header__name-company:hover {
+  opacity: 0.7;
 }
 
 /* Навигация */
@@ -65,6 +75,23 @@
 }
 
 .header__link-phone {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.6s ease;
+}
+
+.header__link-phone:hover {
+  opacity: 0.9;
+}
+
+.header__link-phone-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.header__link-phone-number {
   font-size: clamp(13px, 1.5vw, 16px);
   white-space: nowrap;
   color: white;
@@ -72,6 +99,7 @@
 }
 
 /* Кнопка "Оставить заявку" */
+
 .header_button-query {
   font-size: 14px;
   padding: 10px 20px;
@@ -167,11 +195,17 @@
 }
 
 /* ==== Бургер ==== */
-.header__burger {
+.header__burger-container {
   display: none;
+  gap: 15px;
+  align-items: center;
+}
+
+.header__burger {
+  display: flex;
   margin: 0;
   flex-direction: column;
-  gap: 5px;
+  gap: 9px;
   padding: 8px;
   background: none;
   border: none;
@@ -179,8 +213,8 @@
 }
 
 .header__burger span {
-  width: 26px;
-  height: 3px;
+  width: 32px;
+  height: 2px;
   background-color: white;
 }
 
@@ -253,6 +287,15 @@
   .header__link-phone,
   .header_button-query {
     display: none;
+  }
+
+  .header__burger-container {
+    display: flex;
+  }
+
+  .header__link-phone-icon-burger {
+    height: 27px;
+    width: 27px;
   }
 
   .header__burger {

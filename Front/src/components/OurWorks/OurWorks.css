@@ -35,7 +35,7 @@
 @media screen and (max-width: 980px) {
   .our-works {
     width: 100%;
-    padding: 0 20px;
+    /* padding: 0 20px; */
     margin: calc((100vw - 320px) / (980 - 320) * (150 - 80) + 80px) auto;
   }
 

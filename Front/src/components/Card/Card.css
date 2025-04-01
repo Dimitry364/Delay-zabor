@@ -1,11 +1,12 @@
 .card {
-  width: 270px;
-  height: 460px;
+  width: 100%;
+  max-width: 320px;
   background-color: #fefefe;
   border-radius: 8px;
   transition: transform 0.3s ease;
   box-shadow: 0px 2px 50px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .card:hover {
@@ -15,40 +16,39 @@
 .card__link {
   text-decoration: none;
   color: inherit;
+  display: block;
 }
 
 .card__image {
   width: 100%;
-  height: 185px;
+  height: clamp(160px, 30vw, 185px);
+  object-fit: cover;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
 
 .card__info {
   box-sizing: border-box;
-  margin: 0;
-  height: 190px;
-  padding: 15px;
+  padding: 20px;
 }
 
 .card__name {
-  height: 54px;
-  font-size: 22px;
+  font-size: clamp(18px, 4vw, 22px);
   font-weight: 700;
-  line-height: 27px;
-  margin: 0 0 10px;
+  line-height: 1.2;
+  margin: 0 0 8px;
 }
 
 .card__price {
-  margin: 10px 0;
-  font-size: 14px;
+  margin: 6px 0;
+  font-size: clamp(12px, 3.5vw, 14px);
   color: #666;
 }
 
 .card__price-span {
   color: #454545;
-  font-size: 18px;
-  line-height: 30px;
+  font-size: clamp(16px, 4vw, 18px);
+  line-height: 1.4;
   font-weight: 700;
 }
 
@@ -57,12 +57,13 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 220px;
-  height: 52px;
-  margin: 10px auto;
+  width: 100%;
+  max-width: 220px;
+  height: clamp(44px, 10vw, 52px);
+  margin: clamp(8px, 2vw, 12px) auto;
   background-color: #ffe522;
   color: #2d3051;
-  font-size: 16px;
+  font-size: clamp(14px, 4vw, 16px);
   font-weight: 600;
   border: none;
   border-radius: 4px;
