@@ -32,3 +32,13 @@
   font-weight: 400;
   text-align: center;
 }
+
+@media screen and (max-width: 960px) {
+  .card-details__colors {
+    gap: calc((100vw - 360px) / (960 - 360) * (10 - 16) + 16px);
+  }
+
+  .card-details__color-item {
+    width: calc((100vw - 360px) / (960 - 360) * (80 - 60) + 60px);
+  }
+}

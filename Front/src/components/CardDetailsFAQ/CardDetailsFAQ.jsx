@@ -1,4 +1,5 @@
 import React from 'react';
+import imgToggle from '../../images/popup/CloseIcon.svg';
 import './CardDetailsFAQ.css';
 
 const CardDetailsFAQ = ({ faq, openFaq, toggleFaq, faqRefs }) => {
@@ -16,7 +17,11 @@ const CardDetailsFAQ = ({ faq, openFaq, toggleFaq, faqRefs }) => {
                 >
                   <h4>{item.question}</h4>
                   <button className='card-details__faq-toggle'>
-                    {openFaq === index ? '-' : '+'}
+                    <img
+                      src={imgToggle}
+                      className='card-details__faq-image'
+                      alt='Открыть/Закрыть'
+                    />
                   </button>
                 </div>
                 {/* Контейнер ответа всегда рендерится, чтобы CSS-анимация работала */}

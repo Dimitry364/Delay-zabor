@@ -29,10 +29,13 @@
 
 .card__info {
   box-sizing: border-box;
-  padding: 20px;
+  padding: calc((100vw - 360px) / (1279 - 360) * (20 - 10) + 10px)
+    calc((100vw - 360px) / (1279 - 360) * (20 - 16) + 16px)
+    calc((100vw - 360px) / (1279 - 360) * (20 - 0) + 0px);
 }
 
 .card__name {
+  height: 45px;
   font-size: clamp(18px, 4vw, 22px);
   font-weight: 700;
   line-height: 1.2;
@@ -60,7 +63,6 @@
   width: 100%;
   max-width: 220px;
   height: clamp(44px, 10vw, 52px);
-  /* margin: clamp(8px, 2vw, 12px) auto; */
   margin: 12px auto calc((100vw - 320px) / (1279 - 320) * (12 - 20) + 20px);
   background-color: #ffe522;
   color: #2d3051;

@@ -23,59 +23,59 @@ function CardDetailsInfo({
         {Object.keys(specifications).length > 0 && (
           <ul className='card-details__specifications'>
             {specifications.height && (
-              <li>
-                <strong>Высота:</strong> {specifications.height}
+              <li className='card-details__list'>
+                <strong className='card-details__strong'>Высота:</strong> {specifications.height}
               </li>
             )}
             {specifications.sheet_thickness && (
-              <li>
-                <strong>Толщина листа:</strong> {specifications.sheet_thickness}
+              <li className='card-details__list'>
+                <strong className='card-details__strong'>Толщина листа:</strong> {specifications.sheet_thickness}
               </li>
             )}
             {specifications.profile && (
-              <li>
-                <strong>Профиль:</strong>{' '}
+              <li className='card-details__list'>
+                <strong className='card-details__strong'>Профиль:</strong>{' '}
                 {Array.isArray(specifications.profile)
                   ? specifications.profile.join(', ')
                   : specifications.profile}
               </li>
             )}
             {specifications.coating && (
-              <li>
-                <strong>Покрытие:</strong>{' '}
+              <li className='card-details__list'>
+                <strong className='card-details__strong'>Покрытие:</strong>{' '}
                 {Array.isArray(specifications.coating)
                   ? specifications.coating.join(', ')
                   : specifications.coating}
               </li>
             )}
             {specifications.pillars && (
-              <li>
-                <strong>Опоры:</strong>{' '}
+              <li className='card-details__list'>
+                <strong className='card-details__strong'>Опоры:</strong>{' '}
                 {Array.isArray(specifications.pillars)
                   ? specifications.pillars.join(', ')
                   : specifications.pillars}
               </li>
             )}
             {specifications.entrance_group && (
-              <li>
-                <strong>Ворота/Калитка:</strong>{' '}
+              <li className='card-details__list'>
+                <strong className='card-details__strong'>Ворота/Калитка:</strong>{' '}
                 {Array.isArray(specifications.entrance_group)
                   ? specifications.entrance_group.join(', ')
                   : specifications.entrance_group}
               </li>
             )}
             {specifications.warranty && (
-              <li>
-                <strong>Гарантия:</strong> {specifications.warranty}
+              <li className='card-details__list'>
+                <strong className='card-details__strong'>Гарантия:</strong> {specifications.warranty}
               </li>
             )}
           </ul>
         )}
         <p className='card-details__price'>
-          <strong>Цена монтажа:</strong> {installation_price}
+          <strong className='card-details__strong'>Цена монтажа:</strong> {installation_price}
         </p>
         <p className='card-details__price'>
-          <strong>Цена под ключ:</strong> {turnkey_price}
+          <strong className='card-details__strong'>Цена под ключ:</strong> {turnkey_price}
         </p>
       </section>
       <button className='card-details__button-send' onClick={openOrderPopup}>

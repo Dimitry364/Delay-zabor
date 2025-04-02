@@ -1,13 +1,11 @@
 .gallery {
-  /* margin: 110px auto 0; */
   padding: 0;
 }
 
 .gallery__container {
-  margin: 140px auto 105px;
-  width: 100%;
+  margin: calc((100vw - 360px) / (1279 - 360) * (90 - 40) + 40px) auto 105px;
   max-width: 1200px;
-  min-height: 85vh;
+  width: 100%;
   padding: 0;
   background-color: #ffffff;
 }
@@ -18,5 +16,18 @@
   line-height: 64px;
   font-weight: 700;
   color: #000000;
-  margin-bottom: 20px;
+  margin: 0 0 20px calc((100vw - 360px) / (1279 - 360) * (10 - 20) + 20px);
+}
+
+@media screen and (max-width: 980px) {
+  .gallery {
+    width: 100%;
+    margin: calc((100vw - 360px) / (980 - 360) * (100 - 80) + 80px) auto 0;
+  }
+
+  .gallery__title {
+    font-size: calc((100vw - 320px) / (980 - 320) * (52 - 32) + 32px);
+    line-height: 1.2;
+    text-align: left;
+  }
 }

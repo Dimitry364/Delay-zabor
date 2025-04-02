@@ -9,7 +9,7 @@
   font-weight: 700;
   color: #000000;
   text-align: left;
-  margin-bottom: 20px;
+  margin: 0 0 20px calc((100vw - 360px) / (1279 - 360) * (10 - 20) + 20px);
 }
 
 .our-works__button {
@@ -35,28 +35,7 @@
 @media screen and (max-width: 980px) {
   .our-works {
     width: 100%;
-    /* padding: 0 20px; */
     margin: calc((100vw - 320px) / (980 - 320) * (150 - 80) + 80px) auto;
-  }
-
-  .work-list {
-    display: grid;
-    justify-content: center; /* Центровка карточек */
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(calc((100vw - 320px) / (980 - 320) * (373 - 127) + 127px), 1fr)
-    );
-    gap: 16px;
-  }
-
-  .work-list__item,
-  .work-list__image {
-    width: 100%;
-    max-width: 373px;
-    height: auto;
-    aspect-ratio: 3 / 2; /* Удерживает пропорции */
-    object-fit: cover;
-    border-radius: 8px;
   }
 
   .our-works__title {
@@ -73,7 +52,7 @@
     line-height: 50px;
     font-size: 16px;
     font-weight: 700;
-    margin: 32px auto 0;
+    margin: clamp(15px, 2vw, 30px) auto 0;
     border-radius: 6px;
   }
 }

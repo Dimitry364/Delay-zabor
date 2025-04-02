@@ -1,19 +1,21 @@
 .work-list {
-  display: grid;
-  /* Задаём фиксированную ширину карточки – 373px */
-  grid-template-columns: repeat(auto-fill, minmax(373px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 20px;
+  width: 100%;
 }
 
 .work-list__item {
-  width: 373px; /* Фиксированная ширина карточки */
+  width: clamp(320px, 100%, 373px);
+  height: clamp(240px, 32vw, 290px);
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  margin: 0 auto;
 }
 
 .work-list__item:hover {
@@ -22,10 +24,11 @@
 }
 
 .work-list__image {
-  width: 373px; /* Фиксированная ширина изображения */
-  height: 246px; /* Фиксированная высота изображения */
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: inherit;
 }
 
 .work-list__name {
@@ -33,16 +36,57 @@
   padding: 10px;
 }
 
-/* Адаптивность для очень узких экранов */
-@media (max-width: 400px) {
+/* Swiper fix для mobile */
+.swiper {
+  width: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.work-list__vertical-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Стрелки */
+.swiper-nav-arrows {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.custom-swiper-button-prev,
+.custom-swiper-button-next {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.work-list__arrow {
+  width: 26px;
+  height: 26px;
+}
+
+.custom-swiper-button-prev:hover,
+.custom-swiper-button-next:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
   .work-list {
-    grid-template-columns: 1fr;
+    display: block; /* swiper сам управляет */
   }
+
   .work-list__item {
-    width: 100%;
-  }
-  .work-list__image {
-    width: 100%;
-    height: auto;
+    width: calc((100vw - 360px) / (768 - 360) * (630 - 320) + 320px);
+    height: calc((100vw - 360px) / (768 - 360) * (450 - 240) + 240px);
   }
 }

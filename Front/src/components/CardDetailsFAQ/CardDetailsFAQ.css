@@ -26,6 +26,12 @@
   padding: 0 10px;
 }
 
+.card-details__faq-image {
+  color: rgba(0, 0, 0);
+  width: 40px;
+  height: 40px;
+}
+
 .card-details__faq-answer {
   max-width: 85%;
   margin-top: 10px;
@@ -35,4 +41,19 @@
   color: #000000;
   overflow: hidden;
   transition: height 0.3s ease;
+}
+
+@media screen and (max-width: 960px) {
+  .card-details__faq-question {
+    padding: 10px 10px 10px 0;
+  }
+
+  .card-details__faq-question h4 {
+    font-size: calc((100vw - 360px) / (960 - 360) * (24 - 20) + 20px);
+  }
+
+  .card-details__faq-answer {
+    margin: 0;
+    font-size: calc((100vw - 360px) / (960 - 360) * (18 - 12) + 12px);
+  }
 }

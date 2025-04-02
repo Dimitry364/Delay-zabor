@@ -1,15 +1,17 @@
 /* Основные стили для контейнера страницы */
 .card-details {
-  margin: 90px auto;
   width: 100%;
-  max-width: 1200px;
   min-height: 100vh;
   padding: 0;
   background-color: #ffffff;
 }
 
 .card-details__container {
-  margin-left: 60px;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 90px 20px;
 }
 
 .card-details__content {
@@ -27,10 +29,19 @@
   color: #000000;
 }
 
-/* Стили для ошибки */
-.card-details__error {
-  color: red;
-  font-size: 1.2rem;
-  text-align: center;
-  margin-top: 20px;
+@media screen and (max-width: 960px) {
+  .card-details__container {
+    max-width: 640px;
+  }
+
+  .card-details__content {
+    flex-direction: column;
+    padding-top: 40px;
+  }
+
+  .card-details__title {
+    font-size: calc((100vw - 360px) / (960 - 360) * (42 - 30) + 30px);
+    margin: calc((100vw - 360px) / (960 - 360) * (150 - 60) + 60px) auto
+      calc((100vw - 360px) / (960 - 360) * (35 - 25) + 25px);
+  }
 }
