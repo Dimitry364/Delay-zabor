@@ -77,7 +77,7 @@ function OrderPopup() {
                   country={'ru'}
                   disableDropdown
                   value={phone}
-                  placeholder='(999) 999-99-99'
+                  placeholder='+7 (999) 999-99-99'
                   onChange={onPhoneChange}
                   inputProps={{
                     name: 'tel',
@@ -123,7 +123,7 @@ function OrderPopup() {
             type='button'
             onClick={closeOrderPopup}
           />
-          <p className='order-form__consent'>
+          <p className='order-popup__consent'>
             Нажимая на кнопку, вы даете согласие на обработку персональных
             данных и соглашаетесь c{' '}
             <Link to='/privacy'>политикой конфиденциальности</Link>

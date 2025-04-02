@@ -1,25 +1,30 @@
 .contacts {
   padding: 60px 20px;
   display: flex;
-  justify-content: center; /* Выравниваем контейнер по центру */
-  background-color: #fff; /* Или другой цвет */
+  justify-content: center;
+  background-color: #fff;
+  box-sizing: border-box;
 }
 
 .contacts__container {
-  display: flex;
-  gap: 40px;
   max-width: 1200px;
+  margin: 135px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
   width: 100%;
 }
 
-/* Левая колонка */
 .contacts__info {
+  max-width: 560px;
   flex: 1;
 }
 
 .contacts__title {
-  font-size: 32px;
-  margin-bottom: 24px;
+  margin: 0 0 30px;
+  font-size: 38px;
+  font-weight: 700;
 }
 
 .contacts__list {
@@ -29,12 +34,14 @@
 }
 
 .contacts__item {
+  font-size: 20px;
   margin-bottom: 16px;
-  font-size: 18px;
+  color: #8d8d8d;
 }
 
 .contacts__item a {
   color: #000;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -42,13 +49,12 @@
   text-decoration: underline;
 }
 
-/* Правая колонка (форма) */
 .contacts__form {
   flex: 1;
+  max-width: 560px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 400px;
 }
 
 .contacts__label {
@@ -60,9 +66,13 @@
 
 .contacts__input {
   margin-top: 8px;
-  padding: 12px;
+  padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  width: 100%;
 }
 
 .contacts__input_error {
@@ -76,21 +86,48 @@
 }
 
 .contacts__message {
+  padding: 12px;
+  margin-top: 5px;
+  text-align: center;
+  border-radius: 4px;
   font-size: 14px;
-  color: #555;
+
+  background-color: #4caf50;
+  color: #fff;
 }
 
-/* Кнопка отправки */
 .contacts__button {
-  padding: 12px 24px;
+  padding: 16px;
   background-color: #ffe522;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .contacts__button:hover {
-  background-color: #d4be1a;
+  background-color: #ffb800;
+}
+
+/* Адаптив для мобильных */
+@media screen and (max-width: 960px) {
+  .contacts__container {
+    max-width: 640px;
+    flex-direction: column;
+  }
+
+  .contacts__form {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contacts__info {
+    width: 100%;
+  }
+
+  .contacts__item {
+    font-size: 18px;
+  }
 }

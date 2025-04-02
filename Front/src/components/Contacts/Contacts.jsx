@@ -1,20 +1,29 @@
 import React from 'react';
 import { useOrderForm } from '../hooks/useOrderForm';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 import './Contacts.css';
 
 function Contacts() {
   const {
     name,
-    setName,
     phone,
     setPhone,
-    countryCode,
-    setCountryCode,
     nameError,
     phoneError,
+    setPhoneError,
+    handleNameChange,
     message,
     handleSubmit,
   } = useOrderForm('RU');
+
+  const onPhoneChange = (value) => {
+    setPhone(value);
+
+    if (value.trim()) {
+      setPhoneError('');
+    }
+  };
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -43,7 +52,6 @@ function Contacts() {
         {/* Правая колонка с формой */}
         <form className='contacts__form' onSubmit={submitForm}>
           <label className='contacts__label'>
-            Ваше имя
             <input
               className={`contacts__input ${
                 nameError ? 'contacts__input_error' : ''
@@ -51,14 +59,43 @@ function Contacts() {
               type='text'
               placeholder='Ваше имя'
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              autoComplete='name'
+              onChange={handleNameChange}
             />
             {nameError && <span className='contacts__error'>{nameError}</span>}
           </label>
 
           <label className='contacts__label'>
-            Ваш телефон
-            <input
+            <PhoneInput
+              // className={`contacts__input ${
+              //   phoneError ? 'contacts__input_error' : ''
+              // }`}
+              country={'ru'}
+              disableDropdown
+              value={phone}
+              placeholder='+7 (999) 999-99-99'
+              onChange={onPhoneChange}
+              inputProps={{
+                name: 'tel',
+                autoComplete: 'tel',
+              }}
+              inputStyle={{
+                width: '100%',
+                height: '60px',
+                paddingLeft: '48px',
+                border: phoneError ? '1px solid red' : '1px solid #ccc',
+                borderRadius: '6px',
+                boxSizing: 'border-box',
+                fontSize: '16px',
+                transition:
+                  'border-color 0.2s ease, background-color 0.2s ease',
+              }}
+              buttonStyle={{
+                border: phoneError ? '1px solid red' : '1px solid #ccc',
+                backgroundColor: 'transparent',
+              }}
+            />
+            {/* <input
               className={`contacts__input ${
                 phoneError ? 'contacts__input_error' : ''
               }`}
@@ -69,6 +106,9 @@ function Contacts() {
             />
             {phoneError && (
               <span className='contacts__error'>{phoneError}</span>
+            )} */}
+            {phoneError && (
+              <span className='order-popup__error'>{phoneError}</span>
             )}
           </label>
 

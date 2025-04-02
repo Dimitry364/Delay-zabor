@@ -21,15 +21,19 @@
 .card-details__faq-toggle {
   background: none;
   border: none;
-  font-size: 25px;
   cursor: pointer;
   padding: 0 10px;
 }
 
 .card-details__faq-image {
-  color: rgba(0, 0, 0);
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+  transform: rotate(45deg);
+}
+
+.card-details__faq-image_open {
+  transform: rotate(0deg);
 }
 
 .card-details__faq-answer {
@@ -55,5 +59,10 @@
   .card-details__faq-answer {
     margin: 0;
     font-size: calc((100vw - 360px) / (960 - 360) * (18 - 12) + 12px);
+  }
+
+  .card-details__faq-image {
+    width: calc((100vw - 360px) / (960 - 360) * (30 - 15) + 15px);
+    height: calc((100vw - 360px) / (960 - 360) * (30 - 15) + 15px);
   }
 }

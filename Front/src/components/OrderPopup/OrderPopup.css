@@ -131,6 +131,15 @@
   background-color: #fffceb; /* Лёгкий оттенок */
 }
 
+.order-popup__consent {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 20px;
+  text-align: left;
+  line-height: 1.55;
+  color: #000;
+}
+
 /* Красная рамка при ошибке */
 .order-popup__input_error {
   border-color: red;
@@ -202,6 +211,13 @@
   .order-popup__submit-button {
     font-size: calc((100vw - 320px) / (1279 - 320) * (18 - 14) + 14px);
     padding: calc((100vw - 320px) / (1279 - 320) * (16 - 12) + 12px);
+  }
+
+  .order-popup__consent {
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: left;
+    margin-top: 16px;
   }
 }
 

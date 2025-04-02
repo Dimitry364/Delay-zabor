@@ -1,5 +1,5 @@
 import React from 'react';
-import imgToggle from '../../images/popup/CloseIcon.svg';
+import imgToggle from '../../images/popup/CloseIconblack.svg';
 import './CardDetailsFAQ.css';
 
 const CardDetailsFAQ = ({ faq, openFaq, toggleFaq, faqRefs }) => {
@@ -19,7 +19,9 @@ const CardDetailsFAQ = ({ faq, openFaq, toggleFaq, faqRefs }) => {
                   <button className='card-details__faq-toggle'>
                     <img
                       src={imgToggle}
-                      className='card-details__faq-image'
+                      className={`card-details__faq-image ${
+                        openFaq === index ? 'card-details__faq-image_open' : ''
+                      }`}
                       alt='Открыть/Закрыть'
                     />
                   </button>
