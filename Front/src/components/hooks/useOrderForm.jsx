@@ -68,7 +68,7 @@ export function useOrderForm(initialCountryCode = 'RU') {
   };
 
   // Функция отправки данных формы на сервер
-  const handleSubmit = async () => {
+  const handleSubmit = async (onSuccessCallback) => {
     // Сначала проверяем форму
     if (!validateForm()) return;
 
@@ -79,6 +79,8 @@ export function useOrderForm(initialCountryCode = 'RU') {
       setName('');
       setPhone('');
       setCountryCode(initialCountryCode);
+
+      if (onSuccessCallback) onSuccessCallback();
     } catch (error) {
       console.error('Ошибка при отправке данных:', error);
       setMessage('Ошибка при создании заявки');

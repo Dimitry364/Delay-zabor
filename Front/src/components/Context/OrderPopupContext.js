@@ -4,6 +4,10 @@ export const OrderPopupContext = createContext();
 
 export const OrderPopupProvider = ({ children }) => {
   const [isOrderPopupOpen, setIsOrderPopupOpen] = useState(false);
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
+
+  const openSuccessPopup = () => setIsSuccessPopupOpen(true);
+  const closeSuccessPopup = () => setIsSuccessPopupOpen(false);
 
   const openOrderPopup = useCallback(() => {
     setIsOrderPopupOpen(true);
@@ -15,7 +19,14 @@ export const OrderPopupProvider = ({ children }) => {
 
   return (
     <OrderPopupContext.Provider
-      value={{ isOrderPopupOpen, openOrderPopup, closeOrderPopup }}
+      value={{
+        isOrderPopupOpen,
+        openOrderPopup,
+        closeOrderPopup,
+        isSuccessPopupOpen,
+        openSuccessPopup,
+        closeSuccessPopup,
+      }}
     >
       {children}
     </OrderPopupContext.Provider>

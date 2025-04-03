@@ -15,9 +15,7 @@
   flex: 1 1 25%;
   align-items: start;
   gap: 15px;
-  background-color: #fdfdfd;
-  border: 1px solid #eee;
-  border-radius: 4px;
+  background-color: transparent;
 }
 
 .card-details__advantage-number {

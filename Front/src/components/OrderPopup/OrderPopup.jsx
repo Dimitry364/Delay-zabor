@@ -7,7 +7,8 @@ import './OrderPopup.css';
 import 'react-phone-input-2/lib/style.css';
 
 function OrderPopup() {
-  const { isOrderPopupOpen, closeOrderPopup } = useContext(OrderPopupContext);
+  const { isOrderPopupOpen, closeOrderPopup, openSuccessPopup } =
+    useContext(OrderPopupContext);
 
   // Используем кастомный хук для управления формой
   const {
@@ -41,7 +42,10 @@ function OrderPopup() {
           className='order-popup__form'
           onSubmit={(e) => {
             e.preventDefault();
-            handleSubmit();
+            handleSubmit(() => {
+              closeOrderPopup();
+              openSuccessPopup();
+            });
           }}
         >
           <h2 className='order-popup__title'>Оставить заявку</h2>

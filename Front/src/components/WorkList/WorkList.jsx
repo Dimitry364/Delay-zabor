@@ -58,7 +58,7 @@ function WorkList({ cards, popupOpen }) {
               <SwiperSlide key={index}>
                 <div className='work-list__vertical-group'>
                   {cardsGroup.map((card) => (
-                    <div className='work-list__item'>
+                    <div className='work-list__item' key={card._id}>
                       <img
                         className='work-list__image'
                         onClick={() => popupOpen(card)}
@@ -91,7 +91,7 @@ function WorkList({ cards, popupOpen }) {
         </>
       ) : (
         cards.map((card) => (
-          <div key={card.id} className='work-list__item'>
+          <div key={card._id} className='work-list__item'>
             <img
               className='work-list__image'
               onClick={() => popupOpen(card)}

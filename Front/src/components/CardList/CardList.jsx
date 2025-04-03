@@ -10,7 +10,7 @@ function CardList() {
       <h2 className='cards__fence'>Виды забора</h2>
       <ul className='cards__list'>
         {cards.map((cardsData) => (
-          <Card key={cardsData.id} card={cardsData} />
+          <Card key={cardsData._id} card={cardsData} />
         ))}
       </ul>
     </section>

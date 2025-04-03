@@ -5,7 +5,7 @@ function FenceLinks({ ListClassName = '', linkClassName = '', cards = [] }) {
   return (
     <>
       {cards.map((card) => (
-        <li key={card.id} className={ListClassName}>
+        <li key={card._id} className={ListClassName}>
           <Link
             to={`/card/${card._id}`}
             className={linkClassName}

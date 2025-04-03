@@ -8,7 +8,8 @@ function CardDetailsInfo({
   turnkey_price,
   specifications,
 }) {
-  const { openOrderPopup } = useContext(OrderPopupContext);
+  const { openOrderPopup, isSuccessPopupOpen, closeSuccessPopup } =
+    useContext(OrderPopupContext);
 
   return (
     <div className='card-details__info'>
@@ -24,12 +25,14 @@ function CardDetailsInfo({
           <ul className='card-details__specifications'>
             {specifications.height && (
               <li className='card-details__list'>
-                <strong className='card-details__strong'>Высота:</strong> {specifications.height}
+                <strong className='card-details__strong'>Высота:</strong>{' '}
+                {specifications.height}
               </li>
             )}
             {specifications.sheet_thickness && (
               <li className='card-details__list'>
-                <strong className='card-details__strong'>Толщина листа:</strong> {specifications.sheet_thickness}
+                <strong className='card-details__strong'>Толщина листа:</strong>{' '}
+                {specifications.sheet_thickness}
               </li>
             )}
             {specifications.profile && (
@@ -58,7 +61,9 @@ function CardDetailsInfo({
             )}
             {specifications.entrance_group && (
               <li className='card-details__list'>
-                <strong className='card-details__strong'>Ворота/Калитка:</strong>{' '}
+                <strong className='card-details__strong'>
+                  Ворота/Калитка:
+                </strong>{' '}
                 {Array.isArray(specifications.entrance_group)
                   ? specifications.entrance_group.join(', ')
                   : specifications.entrance_group}
@@ -66,16 +71,19 @@ function CardDetailsInfo({
             )}
             {specifications.warranty && (
               <li className='card-details__list'>
-                <strong className='card-details__strong'>Гарантия:</strong> {specifications.warranty}
+                <strong className='card-details__strong'>Гарантия:</strong>{' '}
+                {specifications.warranty}
               </li>
             )}
           </ul>
         )}
         <p className='card-details__price'>
-          <strong className='card-details__strong'>Цена монтажа:</strong> {installation_price}
+          <strong className='card-details__strong'>Цена монтажа:</strong>{' '}
+          {installation_price}
         </p>
         <p className='card-details__price'>
-          <strong className='card-details__strong'>Цена под ключ:</strong> {turnkey_price}
+          <strong className='card-details__strong'>Цена под ключ:</strong>{' '}
+          {turnkey_price}
         </p>
       </section>
       <button className='card-details__button-send' onClick={openOrderPopup}>
