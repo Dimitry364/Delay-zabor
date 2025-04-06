@@ -30,7 +30,7 @@ class CardApi {
 }
 
 const cardApi = new CardApi({
-  baseUrl: 'http://api.delay-zabor.nomoredomainsmonster.ru',
+  baseUrl: 'http://api.delaizabor-nsk.ru',
   headers: {
     'Content-Type': 'application/json',
   },

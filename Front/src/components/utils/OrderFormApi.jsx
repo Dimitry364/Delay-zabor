@@ -33,9 +33,8 @@ class OrderFormApi {
 
 // Создаём экземпляр API с нужными параметрами: базовый URL и заголовки.
 const orderFormApi = new OrderFormApi({
-  baseUrl: 'http://api.delay-zabor.nomoredomainsmonster.ru',
+  baseUrl: 'http://api.delaizabor-nsk.ru',
   headers: {
-    accept: '*',
     'Content-Type': 'application/json',
   },
 });
