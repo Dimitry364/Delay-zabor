@@ -30,7 +30,7 @@ class ReviewApi {
 }
 
 const reviewApi = new ReviewApi({
-  baseUrl: 'http://api.delaizabor-nsk.ru',
+  baseUrl: 'https://api.delaizabor-nsk.ru',
   headers: {
     'Content-Type': 'application/json',
   },

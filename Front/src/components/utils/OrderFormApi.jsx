@@ -33,7 +33,7 @@ class OrderFormApi {
 
 // Создаём экземпляр API с нужными параметрами: базовый URL и заголовки.
 const orderFormApi = new OrderFormApi({
-  baseUrl: 'http://api.delaizabor-nsk.ru',
+  baseUrl: 'https://api.delaizabor-nsk.ru',
   headers: {
     'Content-Type': 'application/json',
   },
