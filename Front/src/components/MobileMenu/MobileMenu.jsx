@@ -31,7 +31,11 @@ const MobileMenu = ({ isOpen, onClose, cards }) => {
         <div className='mobile-menu__section'>
           <h3 className='mobile-menu__title'>Виды заборов</h3>
           <ul className='mobile-menu__list'>
-            <FenceLinks cards={cards} linkClassName='mobile-menu__link' />
+            <FenceLinks
+              cards={cards}
+              linkClassName='mobile-menu__link'
+              onClick={onClose}
+            />
           </ul>
         </div>
 

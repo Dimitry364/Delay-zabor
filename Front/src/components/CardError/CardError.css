@@ -1,0 +1,38 @@
+.card-error {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: #333;
+}
+
+.card-error__image {
+  max-width: 300px;
+  margin-top: 50px;
+  /* margin-bottom: 24px; */
+}
+
+.card-error__title {
+  max-width: 460px;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.card-error__button {
+  padding: 10px 24px;
+  background-color: #ffc700;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.card-error__button:hover {
+  background-color: #e0b100;
+}

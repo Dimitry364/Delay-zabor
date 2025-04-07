@@ -38,10 +38,10 @@ function Contacts() {
           <h1 className='contacts__title'>Контакты</h1>
           <ul className='contacts__list'>
             <li className='contacts__item'>
-              Телефон: <a href='tel:+73833181026'>+7 383 318 10 26</a>
+              Телефон: <a href='tel:+73832279303'>+7 (383) 227 93 03</a>
             </li>
             <li className='contacts__item'>
-              Телефон: <a href='tel:+73832279303'>+7 (383)227 93 03</a>
+              Телефон: <a href='tel:+79232279303'>+7 (923) 227 93 03</a>
             </li>
             <li className='contacts__item'>
               E-mail:{' '}
@@ -67,9 +67,6 @@ function Contacts() {
 
           <label className='contacts__label'>
             <PhoneInput
-              // className={`contacts__input ${
-              //   phoneError ? 'contacts__input_error' : ''
-              // }`}
               country={'ru'}
               disableDropdown
               value={phone}
@@ -95,18 +92,6 @@ function Contacts() {
                 backgroundColor: 'transparent',
               }}
             />
-            {/* <input
-              className={`contacts__input ${
-                phoneError ? 'contacts__input_error' : ''
-              }`}
-              type='tel'
-              placeholder='+7 (999) 999-99-99'
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-            {phoneError && (
-              <span className='contacts__error'>{phoneError}</span>
-            )} */}
             {phoneError && (
               <span className='order-popup__error'>{phoneError}</span>
             )}

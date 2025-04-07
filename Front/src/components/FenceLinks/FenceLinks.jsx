@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function FenceLinks({ ListClassName = '', linkClassName = '', cards = [] }) {
+function FenceLinks({
+  ListClassName = '',
+  linkClassName = '',
+  cards = [],
+  onClick,
+}) {
   return (
     <>
       {cards.map((card) => (
@@ -9,7 +14,7 @@ function FenceLinks({ ListClassName = '', linkClassName = '', cards = [] }) {
           <Link
             to={`/card/${card._id}`}
             className={linkClassName}
-            target='_blank'
+            onClick={onClick}
             rel='noopener noreferrer'
           >
             {card.name}

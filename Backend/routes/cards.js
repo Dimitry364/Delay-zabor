@@ -6,9 +6,12 @@ const router = express.Router();
 // Получить все карточки
 router.get('/', async (req, res) => {
   try {
+    console.log('[GET /cards] — запрос получен');
     const cards = await Card.find();
+    console.log(`[GET /cards] — найдено ${cards.length} карточек`);
     res.json(cards);
   } catch (err) {
+    console.error('[GET /cards] — ошибка:', err);
     res.status(500).json({ error: 'Ошибка при получении карточек' });
   }
 });

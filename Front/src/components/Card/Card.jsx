@@ -8,12 +8,7 @@ function Card({ card }) {
   return (
     <li className='card'>
       {/* Обёртка для клика по изображению и информации */}
-      <Link
-        className='card__link'
-        to={cardUrl}
-        target='_blank'
-        rel='noopener noreferrer'
-      >
+      <Link className='card__link' to={cardUrl} rel='noopener noreferrer'>
         <img className='card__image' src={card.image} alt={card.name} />
         <div className='card__info'>
           <h3 className='card__name'>{card.name}</h3>

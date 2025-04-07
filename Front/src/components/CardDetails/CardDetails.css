@@ -1,6 +1,6 @@
-/* Основные стили для контейнера страницы */
 .card-details {
   width: 100%;
+  flex: 1;
   min-height: 100vh;
   padding: 0;
   background-color: #ffffff;

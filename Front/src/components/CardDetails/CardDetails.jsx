@@ -9,6 +9,8 @@ import CardDetailsGate from '../CardDetailsGate/CardDetailsGate';
 import CardDetailsAdvantages from '../CardDetailsAdvantages/CardDetailsAdvantages';
 import CardDetailsFAQ from '../CardDetailsFAQ/CardDetailsFAQ';
 import './CardDetails.css';
+import CardError from '../CardError/CardError';
+import CardSkeleton from '../CardSkeleton/CardSkeleton';
 
 function CardDetails() {
   const { _id } = useParams(); // Получаем Id из URL
@@ -16,6 +18,7 @@ function CardDetails() {
   const [card, setCard] = useState(null);
   const [error, setError] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // Состояние для открытого FAQ: храним индекс открытого вопроса или null (если ни один не открыт)
   const [openFaq, setOpenFaq] = useState(null);
@@ -33,13 +36,35 @@ function CardDetails() {
 
   // Загружаем данные карточки по _id
   useEffect(() => {
+    if (!_id) {
+      setError('Некорректный ID карточки');
+      setLoading(false);
+      return;
+    }
+
+    // Сбрасываем перед новым запросом
+    setCard(null);
+    setError(null);
+    setLoading(true);
+
     CardApi.getCardDetails({ _id })
       .then((cardData) => {
         setCard(cardData);
       })
       .catch((err) => {
-        console.error('Ошибка в получении карточки', err);
-        setError('Карточка не найдена');
+        if (err.name === 'AbortError') {
+          console.warn('Превышено время ожидания ответа');
+          setError(
+            'Сервер долго не отвечает, попробуйте перезагрузить страницу'
+          );
+          return;
+        } else {
+          setError('Карточка не найдена');
+          console.error('Ошибка в получении карточки', err);
+        }
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [_id]);
 
@@ -78,11 +103,13 @@ function CardDetails() {
   }
 
   if (error) {
-    return <p className='card-details__error'>{error}</p>;
+    return (
+      <CardError message={error} onRetry={() => window.location.reload()} />
+    );
   }
 
-  if (!card) {
-    return <p>Загрузка...</p>;
+  if (loading) {
+    return <CardSkeleton />;
   }
 
   // Деструктуризация данных карточки

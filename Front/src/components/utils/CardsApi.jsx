@@ -15,17 +15,24 @@ class CardApi {
   }
 
   getInitialCards() {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000); // 5 секунд
     return this._request(`${this._baseUrl}/cards`, {
       method: 'GET',
       headers: this._headers,
-    });
+      signal: controller.signal,
+    }).finally(() => clearTimeout(timeout));
   }
 
   getCardDetails(data) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000); // 10 секунд
+
     return this._request(`${this._baseUrl}/cards/${data._id}`, {
       method: 'GET',
       headers: this._headers,
-    });
+      signal: controller.signal,
+    }).finally(() => clearTimeout(timeout));
   }
 }
 

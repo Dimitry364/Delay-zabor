@@ -1,0 +1,83 @@
+.skeleton {
+  background: linear-gradient(90deg, #eeeeee 25%, #dddddd 50%, #eeeeee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 6px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Используем текущую разметку как шаблон */
+.skeleton__image {
+  width: 400px;
+  height: 300px;
+  border-radius: 8px;
+}
+
+.skeleton__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+
+.skeleton__title {
+  width: 70%;
+  height: 36px;
+}
+
+.skeleton__price {
+  width: 40%;
+  height: 20px;
+}
+
+.skeleton__spec {
+  width: 90%;
+  height: 16px;
+}
+
+.skeleton__section {
+  margin-top: 190px;
+}
+
+.skeleton__subtitle {
+  width: 30%;
+  height: 28px;
+  margin-bottom: 16px;
+}
+
+.skeleton__colors {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.skeleton__color {
+  width: 60px;
+  height: 60px;
+  border-radius: 5%;
+}
+
+.skeleton__gates {
+  display: flex;
+  gap: 20px;
+}
+
+.skeleton__gate {
+  width: 150px;
+  height: 100px;
+  border-radius: 6px;
+}
+
+.skeleton__paragraph {
+  width: 100%;
+  height: 18px;
+  margin-top: 10px;
+}
