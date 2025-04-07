@@ -16,7 +16,7 @@ class CardApi {
 
   getInitialCards() {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 5000); // 5 секунд
+    const timeout = setTimeout(() => controller.abort(), 10000);
     return this._request(`${this._baseUrl}/cards`, {
       method: 'GET',
       headers: this._headers,

@@ -9,11 +9,12 @@ const CardSkeleton = () => {
           <div className='skeleton skeleton__image' />
           <div className='skeleton__info'>
             <div className='skeleton skeleton__title' />
+            <div className='skeleton skeleton__spec' />
+            <div className='skeleton skeleton__spec' />
+            <div className='skeleton skeleton__spec' />
+            <div className='skeleton skeleton__spec' />
             <div className='skeleton skeleton__price' />
             <div className='skeleton skeleton__price' />
-            <div className='skeleton skeleton__spec' />
-            <div className='skeleton skeleton__spec' />
-            <div className='skeleton skeleton__spec' />
           </div>
         </div>
 
