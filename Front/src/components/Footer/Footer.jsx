@@ -54,10 +54,7 @@ function Footer() {
               </Link>
             </li>
             <li>
-              <Link
-                to='/privacy'
-                className='footer__link footer__link_about footer__link_policy'
-              >
+              <Link to='/privacy' className='footer__link footer__link_about footer__link_policy'>
                 Политика конфиденциальности
               </Link>
             </li>
@@ -68,18 +65,18 @@ function Footer() {
           <ul className='footer__list'>
             <li>
               <a
-                href='tel:+73832279303'
+                href='tel:+73833181026'
                 className='footer__link footer__link_about'
               >
-                +7 (383) 227 93 03
+                +7 (383) 318 10 26
               </a>
             </li>
             <li>
               <a
-                href='tel:+79232279303'
+                href='tel:+73832279303'
                 className='footer__link footer__link_about'
               >
-                +7 (923) 227 93 03
+                +7 (383) 227 93 03
               </a>
             </li>
             <li>
