@@ -3,6 +3,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "updateImg": "node updateImages.js",
     "import:cards": "node importCards.js"
   },
   "dependencies": {

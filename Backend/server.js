@@ -31,7 +31,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Роуты
-app.use('/images', express.static(path.join(__dirname, 'public/image')));
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 app.use('/cards', cardsRouter);
 app.use('/reviews', reviewsRouter);
 app.use('/order', orderRouter);

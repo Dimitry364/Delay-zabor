@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
-import Card from './models/Card.js';
+import Card from '../models/Card.js';
 
 dotenv.config();
 
