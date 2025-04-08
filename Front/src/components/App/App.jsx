@@ -21,7 +21,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Main />} />
-        <Route path='/card/:_id' element={<CardDetails />}></Route>
+        <Route path='/card/:slug' element={<CardDetails />}></Route>
         <Route path='/gallery' element={<GalleryPage />}></Route>
         <Route path='/about-details' element={<AboutDetails />}></Route>
         <Route path='/contacts' element={<Contacts />}></Route>

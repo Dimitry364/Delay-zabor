@@ -13,7 +13,7 @@ import CardError from '../CardError/CardError';
 import CardSkeleton from '../CardSkeleton/CardSkeleton';
 
 function CardDetails() {
-  const { _id } = useParams(); // Получаем Id из URL
+  const { slug } = useParams(); // Получаем IdSlug из URL
   const { pathname } = useLocation();
   const [card, setCard] = useState(null);
   const [error, setError] = useState(null);
@@ -34,10 +34,10 @@ function CardDetails() {
     });
   }, [pathname]);
 
-  // Загружаем данные карточки по _id
+  // Загружаем данные карточки по slug
   useEffect(() => {
-    if (!_id) {
-      setError('Некорректный ID карточки');
+    if (!slug) {
+      setError('Некорректный IDSlug карточки');
       setLoading(false);
       return;
     }
@@ -47,7 +47,7 @@ function CardDetails() {
     setError(null);
     setLoading(true);
 
-    CardApi.getCardDetails({ _id })
+    CardApi.getCardDetails({ slug })
       .then((cardData) => {
         setCard(cardData);
       })
@@ -66,7 +66,7 @@ function CardDetails() {
       .finally(() => {
         setLoading(false);
       });
-  }, [_id]);
+  }, [slug]);
 
   // Эффект для анимации FAQ: обновляем высоту контейнера ответа
   useEffect(() => {

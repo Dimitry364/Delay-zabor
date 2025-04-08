@@ -28,7 +28,7 @@ class CardApi {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 10000); // 10 секунд
 
-    return this._request(`${this._baseUrl}/cards/${data._id}`, {
+    return this._request(`${this._baseUrl}/cards/${data.slug}`, {
       method: 'GET',
       headers: this._headers,
       signal: controller.signal,

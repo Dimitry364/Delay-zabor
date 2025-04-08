@@ -12,7 +12,7 @@ function FenceLinks({
       {cards.map((card) => (
         <li key={card._id} className={ListClassName}>
           <Link
-            to={`/card/${card._id}`}
+            to={`/card/${card.slug}`}
             className={linkClassName}
             onClick={onClick}
             rel='noopener noreferrer'

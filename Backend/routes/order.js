@@ -20,7 +20,6 @@ router.post('/', async (req, res) => {
 
   try {
     // Отправка письма на почту
-    console.log('📨 Отправляем email:', YANDEX_EMAIL);
 
     const transporter = nodemailer.createTransport({
       host: 'smtp.yandex.ru',

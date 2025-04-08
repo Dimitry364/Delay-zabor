@@ -17,9 +17,20 @@ router.get('/', async (req, res) => {
 });
 
 // Получить одну карточку по ID
-router.get('/:id', async (req, res) => {
+router.get('/:id([0-9a-fA-F]{24})', async (req, res) => {
   try {
     const card = await Card.findById(req.params.id);
+    if (!card) return res.status(404).json({ error: 'Карточка не найдена' });
+    res.json(card);
+  } catch (err) {
+    res.status(500).json({ error: 'Ошибка при получении карточки' });
+  }
+});
+
+// Получить карточку по slug
+router.get('/:slug', async (req, res) => {
+  try {
+    const card = await Card.findOne({ slug: req.params.slug });
     if (!card) return res.status(404).json({ error: 'Карточка не найдена' });
     res.json(card);
   } catch (err) {
