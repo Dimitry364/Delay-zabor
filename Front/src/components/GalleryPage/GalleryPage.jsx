@@ -22,20 +22,6 @@ const GalleryPage = () => {
     });
   }, [pathname]);
 
-  const handlePopupOpen = (card) => {
-    setSelectedCard(card);
-  };
-
-  const handlePopupClose = () => {
-    setSelectedCard(null);
-  };
-
-  const handlePopupCloseClickByOverlay = (e) => {
-    if (e.target.classList.contains('popup')) {
-      handlePopupClose();
-    }
-  };
-
   useEffect(() => {
     CardApi.getInitialCards()
       .then((cardsData) => {
@@ -49,6 +35,20 @@ const GalleryPage = () => {
         console.error(err);
       });
   }, []);
+
+  const handlePopupOpen = (card) => {
+    setSelectedCard(card);
+  };
+
+  const handlePopupClose = () => {
+    setSelectedCard(null);
+  };
+
+  const handlePopupCloseClickByOverlay = (e) => {
+    if (e.target.classList.contains('popup')) {
+      handlePopupClose();
+    }
+  };
 
   if (error) {
     return (

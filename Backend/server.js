@@ -5,6 +5,8 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import cardsRouter from './routes/cards.js';
 import reviewsRouter from './routes/reviews.js';
@@ -25,7 +27,11 @@ mongoose
   .then(() => console.log('✅ MongoDB подключена'))
   .catch((err) => console.error('❌ Ошибка подключения MongoDB:', err));
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Роуты
+app.use('/images', express.static(path.join(__dirname, 'public/image')));
 app.use('/cards', cardsRouter);
 app.use('/reviews', reviewsRouter);
 app.use('/order', orderRouter);
