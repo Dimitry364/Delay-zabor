@@ -1,11 +1,7 @@
 import './App.css';
 import React, { useContext } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import {
-  OrderPopupContext,
-  OrderPopupProvider,
-} from '../Context/OrderPopupContext';
-import { CardsProvider } from '../Context/CardsContext';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { OrderPopupContext } from '../Context/OrderPopupContext';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import CardDetails from '../CardDetails/CardDetails';
@@ -30,6 +26,7 @@ function App() {
         <Route path='/about-details' element={<AboutDetails />}></Route>
         <Route path='/contacts' element={<Contacts />}></Route>
         <Route path='/privacy' element={<Privacy />}></Route>
+        <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
       <OrderPopup />
       {isSuccessPopupOpen && <SuccessPopup onClose={closeSuccessPopup} />}

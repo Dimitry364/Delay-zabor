@@ -16,8 +16,8 @@
 
 /* Используем текущую разметку как шаблон */
 .skeleton__image {
-  width: 600px;
-  height: 400px;
+  width: 560px;
+  height: 420px;
   border-radius: 8px;
 }
 
