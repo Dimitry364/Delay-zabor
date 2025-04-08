@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Card.css';
 
 function Card({ card }) {
-  const cardUrl = `/card/${card._id}`;
+  const cardUrl = `/card/${card.slug}`;
 
   return (
     <li className='card'>
