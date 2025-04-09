@@ -26,8 +26,8 @@ function OurWorks() {
 
   const displayedImages = images.slice(0, 6);
 
-  const handlePopupOpen = (card) => {
-    setSelectedImage(card);
+  const handlePopupOpen = (image) => {
+    setSelectedImage({ image: image });
   };
 
   const handlePopupClose = () => {
