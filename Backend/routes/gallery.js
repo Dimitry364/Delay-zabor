@@ -14,13 +14,10 @@ router.get('/', (req, res) => {
     }
 
     const images = files
-      .filter((file) => {
-        /\.(jpg|jpeg|png|webp)$/i.test(file);
-      })
-      .map((file) => {
-        `/images/ourworks/${file}`;
-      });
-    res.json(images);
+      .filter((file) => /\.(jpg|jpeg|png|webp)$/i.test(file))
+      .map((file) => `/images/ourworks/${file}`); // возвращаем путь
+
+    res.json(images); // возвращаем в ответ
   });
 });
 

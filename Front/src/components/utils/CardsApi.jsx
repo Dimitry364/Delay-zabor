@@ -36,10 +36,14 @@ class CardApi {
   }
 
   getOurWorksImages() {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000); // 10 секунд
+
     return this._request(`${this._baseUrl}/gallery-images`, {
       method: 'GET',
       headers: this._headers,
-    });
+      signal: controller.signal,
+    }).finally(() => clearTimeout(timeout));
   }
 }
 
