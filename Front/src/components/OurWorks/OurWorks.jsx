@@ -1,23 +1,37 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import WorkList from '../WorkList/WorkList';
+import CardApi from '../utils/CardsApi';
 import ImagePopup from '../ImagePopup/ImagePopup';
-import { CardsContext } from '../Context/CardsContext';
+import Loader from '../Loader/Loader';
+import CardError from '../CardError/CardError';
 import './OurWorks.css';
 
 function OurWorks() {
-  const { cards } = useContext(CardsContext);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [images, setImages] = useState([]);
+  const [error, setError] = useState(null);
 
-  const displayedCards = cards.slice(0, 6);
+  useEffect(() => {
+    CardApi.getOurWorksImages()
+      .then((data) => {
+        setImages(data);
+      })
+      .catch((err) => {
+        setError('Ошибка загрузки галереи, попробуйте презагрузить страницу');
+        console.log('Ошибка в получении галереи');
+        console.error(err);
+      });
+  }, []);
 
-  const [selectedCard, setSelectedCard] = React.useState(null);
+  const displayedImages = images.slice(0, 6);
 
   const handlePopupOpen = (card) => {
-    setSelectedCard(card);
+    setSelectedImage(card);
   };
 
   const handlePopupClose = () => {
-    setSelectedCard(null);
+    setSelectedImage(null);
   };
 
   const handlePopupCloseClickByOverlay = (e) => {
@@ -26,15 +40,25 @@ function OurWorks() {
     }
   };
 
+  if (error) {
+    return (
+      <CardError message={error} onRetry={() => window.location.reload()} />
+    );
+  }
+
+  if (!images.length) {
+    return <Loader />;
+  }
+
   return (
     <section className='our-works'>
       <h2 className='our-works__title'>Наши работы</h2>
-      <WorkList cards={displayedCards} popupOpen={handlePopupOpen} />
+      <WorkList images={displayedImages} popupOpen={handlePopupOpen} />
       <Link to='/gallery' className='our-works__button'>
         Смотреть все
       </Link>
       <ImagePopup
-        card={selectedCard}
+        card={selectedImage}
         onClose={handlePopupClose}
         onCloseClickOverlay={handlePopupCloseClickByOverlay}
       />
