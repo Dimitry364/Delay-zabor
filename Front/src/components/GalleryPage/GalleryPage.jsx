@@ -9,7 +9,7 @@ import Loader from '../Loader/Loader';
 import CardError from '../CardError/CardError';
 
 const GalleryPage = () => {
-  const [cards, setCards] = useState([]);
+  const [images, setImages] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
   const [error, setError] = useState(null);
   const { pathname } = useLocation();
@@ -23,21 +23,19 @@ const GalleryPage = () => {
   }, [pathname]);
 
   useEffect(() => {
-    CardApi.getInitialCards()
-      .then((cardsData) => {
-        setCards(cardsData);
+    CardApi.getOurWorksImages()
+      .then((data) => {
+        setImages(data);
       })
       .catch((err) => {
-        setError(
-          'Ошибка в получении карточки, попробуйте презагрузить страницу'
-        );
-        console.log('Ошибка в получении карточки');
+        setError('Ошибка загрузки галереи, попробуйте презагрузить страницу');
+        console.log('Ошибка в получении галереи');
         console.error(err);
       });
   }, []);
 
-  const handlePopupOpen = (card) => {
-    setSelectedCard(card);
+  const handlePopupOpen = (imageUrl) => {
+    setSelectedCard({ image: imageUrl });
   };
 
   const handlePopupClose = () => {
@@ -56,7 +54,7 @@ const GalleryPage = () => {
     );
   }
 
-  if (cards.length === 0) {
+  if (!images.length) {
     return <Loader />;
   }
 
@@ -64,7 +62,7 @@ const GalleryPage = () => {
     <div className='gallery'>
       <div className='gallery__container'>
         <h1 className='gallery__title'>Наши работы</h1>
-        <WorkList cards={cards} popupOpen={handlePopupOpen} />
+        <WorkList images={images} popupOpen={handlePopupOpen} />
       </div>
       <OrderForm title='Остались вопросы?' />
       <ImagePopup

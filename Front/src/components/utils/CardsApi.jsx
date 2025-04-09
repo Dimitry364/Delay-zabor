@@ -34,6 +34,13 @@ class CardApi {
       signal: controller.signal,
     }).finally(() => clearTimeout(timeout));
   }
+
+  getOurWorksImages() {
+    return this._request(`${this._baseUrl}/gallery-images`, {
+      method: 'GET',
+      headers: this._headers,
+    });
+  }
 }
 
 const cardApi = new CardApi({

@@ -7,36 +7,36 @@ dotenv.config();
 
 const imageMap = {
   'zabor-iz-profnastila': {
-    image: '/images/mainImage/profnastil.png',
+    image: 'https://api.delaizabor-nsk.ru/images/mainImage/profnastil.png',
     gates: [
-      '/images/profnastil/otkatvorota.jpg',
-      '/images/profnastil/kalitka.jpg',
-      '/images/profnastil/raspVorota.jpg',
-      '/images/profnastil/otkatvorotaSKalitkoi.jpg',
+      'https://api.delaizabor-nsk.ru/images/profnastil/otkatvorota.jpg',
+      'https://api.delaizabor-nsk.ru/images/profnastil/kalitka.jpg',
+      'https://api.delaizabor-nsk.ru/images/profnastil/raspVorota.jpg',
+      'https://api.delaizabor-nsk.ru/images/profnastil/otkatvorotaSKalitkoi.jpg',
     ],
   },
   'zabor-iz-proftruby': {
-    image: '/images/mainImage/proftruba.png',
+    image: 'https://api.delaizabor-nsk.ru/images/mainImage/proftruba.png',
     gates: [],
   },
   'zabor-iz-evroshtaketnika': {
-    image: '/images/mainImage/euroShtaket.png',
+    image: 'https://api.delaizabor-nsk.ru/images/mainImage/euroShtaket.png',
     gates: [],
   },
   'zabor-iz-setki-rabitsa': {
-    image: '/images/mainImage/setkarabica.png',
+    image: 'https://api.delaizabor-nsk.ru/images/mainImage/setkarabica.png',
     gates: [],
   },
   'zabor-iz-polikarbonata': {
-    image: '/images/mainImage/policarbonat.png',
+    image: 'https://api.delaizabor-nsk.ru/images/mainImage/policarbonat.png',
     gates: [],
   },
   'zabor-kovkoy': {
-    image: '/images/mainImage/kovka.png',
+    image: 'https://api.delaizabor-nsk.ru/images/mainImage/kovka.png',
     gates: [],
   },
   'zabor-3d': {
-    image: '/images/mainImage/3d.png',
+    image: 'https://api.delaizabor-nsk.ru/images/mainImage/3d.png',
     gates: [],
   },
 };

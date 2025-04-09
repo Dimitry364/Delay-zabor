@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import './WorkList.css';
 
-function WorkList({ cards, popupOpen }) {
+function WorkList({ images, popupOpen }) {
   const [isMobile, setIsmobile] = useState(window.innerWidth <= 768);
   const swiperRef = useRef(null);
 
@@ -33,10 +33,12 @@ function WorkList({ cards, popupOpen }) {
       swiperRef.current.slidePrev();
     }
   };
+
   //Группируем по 2 карточки на слайд
   const groupedCards = [];
-  for (let i = 0; i < cards.length; i += 2) {
-    groupedCards.push(cards.slice(i, i + 2));
+
+  for (let i = 0; i < images.length; i += 2) {
+    groupedCards.push(images.slice(i, i + 2));
   }
 
   return (
@@ -54,16 +56,16 @@ function WorkList({ cards, popupOpen }) {
             modules={[Navigation]}
             className='swiper__works'
           >
-            {groupedCards.map((cardsGroup, index) => (
+            {groupedCards.map((imgGroup, index) => (
               <SwiperSlide key={index}>
                 <div className='work-list__vertical-group'>
-                  {cardsGroup.map((card) => (
-                    <div className='work-list__item' key={card._id}>
+                  {imgGroup.map((imgUrl, ind) => (
+                    <div className='work-list__item' key={ind}>
                       <img
                         className='work-list__image'
-                        onClick={() => popupOpen(card)}
-                        src={card.image}
-                        alt={card.name}
+                        onClick={() => popupOpen(imgUrl)}
+                        src={imgUrl}
+                        alt={`Наша работа ${ind}`}
                       />
                     </div>
                   ))}
@@ -90,13 +92,13 @@ function WorkList({ cards, popupOpen }) {
           </div>
         </>
       ) : (
-        cards.map((card) => (
-          <div key={card._id} className='work-list__item'>
+        images.map((imgUrl, index) => (
+          <div key={index} className='work-list__item'>
             <img
               className='work-list__image'
-              onClick={() => popupOpen(card)}
-              src={card.image}
-              alt={card.name}
+              onClick={() => popupOpen(imgUrl)}
+              src={imgUrl}
+              alt={`Наша работа ${index}`}
             ></img>
           </div>
         ))
