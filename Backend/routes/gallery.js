@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   fs.readdir(dirPath, (err, files) => {
     if (err) {
       console.error('Ошибка чтения изображения галереи', err);
-      return res.status(500).join({ message: 'ошибка сервера' });
+      return res.status(500).json({ message: 'ошибка сервера' });
     }
 
     const images = files
@@ -20,9 +20,8 @@ router.get('/', (req, res) => {
       .map((file) => {
         `/images/ourworks/${file}`;
       });
+    res.json(images);
   });
-
-  res.json(images);
 });
 
 export default router;
