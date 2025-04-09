@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   const dirPath = path.join(process.cwd(), 'public/images/ourworks');
+  const baseUrl = `${req.protocol}://${req.get('host')}`;
 
   fs.readdir(dirPath, (err, files) => {
     if (err) {
@@ -15,7 +16,7 @@ router.get('/', (req, res) => {
 
     const images = files
       .filter((file) => /\.(jpg|jpeg|png|webp)$/i.test(file))
-      .map((file) => `/images/ourworks/${file}`); // возвращаем путь
+      .map((file) => `${baseUrl}/images/ourworks/${file}`); // возвращаем путь
 
     res.json(images); // возвращаем в ответ
   });

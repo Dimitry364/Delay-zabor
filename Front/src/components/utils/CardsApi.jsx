@@ -11,6 +11,7 @@ class CardApi {
   }
 
   _request(url, option) {
+    console.log(url);
     return fetch(url, option).then(this._checkResponse);
   }
 

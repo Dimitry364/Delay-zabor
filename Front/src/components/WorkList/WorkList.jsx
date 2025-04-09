@@ -65,7 +65,7 @@ function WorkList({ images, popupOpen }) {
                         className='work-list__image'
                         onClick={() => popupOpen(imgUrl)}
                         src={imgUrl}
-                        alt={`Наша работа ${ind}`}
+                        alt={`Фото ${ind + 1}`}
                       />
                     </div>
                   ))}
@@ -98,7 +98,7 @@ function WorkList({ images, popupOpen }) {
               className='work-list__image'
               onClick={() => popupOpen(imgUrl)}
               src={imgUrl}
-              alt={`Наша работа ${index}`}
+              alt={`Фото ${index + 1}`}
             ></img>
           </div>
         ))
