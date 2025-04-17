@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './OrderForm.css';
 import orderFormApi from '../utils/OrderFormApi';
 
-function OrderForm({title}) {
+function OrderForm({ title }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   // Хранение ошибок валидации для каждого поля
@@ -47,6 +47,11 @@ function OrderForm({title}) {
       setMessage({ text: 'Форма успешно отправлена!', type: 'success' });
       setName('');
       setPhone('');
+
+      // GTM событие
+      if (window && window.dataLayer) {
+        window.dataLayer.push({ event: 'form_submit' });
+      }
     } catch (err) {
       setMessage({
         text: 'Ошибка при отправке данных. Попробуйте позже.',

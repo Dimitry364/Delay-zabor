@@ -2,25 +2,41 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import axios from 'axios';
+import rateLimit from 'express-rate-limit';
 
 const router = express.Router();
 
+// Антиспам: максимум 1 заявка с IP в 10 сек
+const limiter = rateLimit({
+  windowMs: 10 * 1000, // 10 секунд
+  max: 2,
+  message: 'Слишком частые запросы. Попробуйте чуть позже.',
+});
+router.use(limiter);
+
 router.post('/', async (req, res) => {
   const { name, phone } = req.body;
-  if (!name || !phone)
-    return res.status(400).json({ error: 'Имя и телефон обязательны' });
 
-  // Загружаем переменные окружения при вызове маршрута
-  const YANDEX_EMAIL = process.env.YANDEX_EMAIL;
-  const YANDEX_PASS = process.env.YANDEX_PASS;
-  const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
-  const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+  if (!name || !phone) {
+    console.warn('❌ Запрос без имени или телефона');
+    return res.status(400).json({ error: 'Имя и телефон обязательны' });
+  }
 
   const text = `📩 Новая заявка\n👤 Имя: ${name}\n📞 Телефон: ${phone}`;
 
-  try {
-    // Отправка письма на почту
+  const YANDEX_EMAIL = process.env.YANDEX_EMAIL;
+  const YANDEX_PASS = process.env.YANDEX_PASS;
+  const RECIPIENTS = process.env.RECIPIENTS
+    ? process.env.RECIPIENTS.split(',').map((email) => email.trim())
+    : [YANDEX_EMAIL];
 
+  const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
+  const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+
+  const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
+
+  // === 1. Email ===
+  try {
     const transporter = nodemailer.createTransport({
       host: 'smtp.yandex.ru',
       port: 465,
@@ -33,12 +49,18 @@ router.post('/', async (req, res) => {
 
     await transporter.sendMail({
       from: YANDEX_EMAIL,
-      to: YANDEX_EMAIL,
+      to: RECIPIENTS.join(','),
       subject: 'Новая заявка с сайта',
       text,
     });
 
-    // Отправка в Telegram
+    console.log('Email отправлен на:', RECIPIENTS.join(', '));
+  } catch (err) {
+    console.error('❌ Ошибка отправки email:', err.message);
+  }
+
+  // === 2. Telegram ===
+  try {
     await axios.post(
       `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`,
       {
@@ -46,12 +68,22 @@ router.post('/', async (req, res) => {
         text,
       }
     );
-
-    res.status(200).json({ message: 'Заявка отправлена' });
+    console.log('Telegram-уведомление отправлено');
   } catch (err) {
-    console.error('❌ Ошибка при отправке email:', err);
-    res.status(500).json({ error: 'Ошибка при отправке заявки' });
+    console.error('❌ Ошибка отправки в Telegram:', err.message);
   }
+
+  // === 3. Strapi ===
+  try {
+    await axios.post(`${STRAPI_URL}/api/zayavkas`, {
+      data: { name, phone },
+    });
+    console.log('Заявка сохранена в Strapi');
+  } catch (err) {
+    console.error('❌ Ошибка при записи в Strapi:', err.message);
+  }
+
+  res.status(200).json({ message: 'Заявка обработана' });
 });
 
 export default router;

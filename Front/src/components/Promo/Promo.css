@@ -121,58 +121,6 @@
   border-radius: 5px;
 }
 
-/* ===== Этапы работы ===== */
-.promo__steps {
-  margin-top: clamp(64px, 10vw, 110px);
-  width: 100%;
-}
-
-.promo__steps-title {
-  color: #fff;
-  margin: 0 0 clamp(24px, 6vw, 48px);
-  font-size: clamp(32px, 6vw, 58px);
-  font-weight: 700;
-  line-height: clamp(39px, 6vw, 71px);
-  text-align: left;
-}
-
-.promo__steps-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: clamp(24px, 6vw, 40px) clamp(16px, 5vw, 32px);
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.promo__steps-item {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(12px, 3vw, 22px);
-  color: #ccc;
-  align-items: flex-start;
-}
-
-.promo__steps-icon {
-  display: block;
-  width: clamp(36px, 10vw, 55px);
-  height: auto;
-}
-
-.promo__steps-strong {
-  font-size: clamp(16px, 4vw, 20px);
-  font-weight: 700;
-  line-height: 1.35;
-  color: #fff;
-}
-
-.promo__steps-paragraph {
-  margin: 0;
-  font-size: clamp(12px, 3.5vw, 16px);
-  font-weight: 400;
-  line-height: 1.5;
-  color: #eeeeee;
-}
 
 @media screen and (max-width: 1134px) {
   .promo__list {

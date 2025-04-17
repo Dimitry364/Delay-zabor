@@ -81,6 +81,11 @@ export function useOrderForm(initialCountryCode = 'RU') {
       setCountryCode(initialCountryCode);
 
       if (onSuccessCallback) onSuccessCallback();
+
+      // GTM событие
+      if (window && window.dataLayer) {
+        window.dataLayer.push({ event: 'form_submit' });
+      }
     } catch (error) {
       console.error('Ошибка при отправке данных:', error);
       setMessage('Ошибка при создании заявки');
