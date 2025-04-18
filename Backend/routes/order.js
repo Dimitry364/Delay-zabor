@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
   const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
   const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
-  const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
+  // const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
 
   // === 1. Email ===
   try {
@@ -52,6 +52,15 @@ router.post('/', async (req, res) => {
       to: RECIPIENTS.join(','),
       subject: 'Новая заявка с сайта',
       text,
+      html: `
+      <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+        <h2 style="color: #1a73e8;">📩 Новая заявка с сайта</h2>
+        <p><strong>Имя:</strong> ${name}</p>
+        <p><strong>Телефон:</strong> ${phone}</p>
+        <hr style="border: none; border-top: 1px solid #eee;" />
+        <p style="font-size: 12px; color: #888;">Отправлено с сайта delaizabor-nsk.ru</p>
+      </div>
+    `,
     });
 
     console.log('Email отправлен на:', RECIPIENTS.join(', '));
@@ -74,14 +83,14 @@ router.post('/', async (req, res) => {
   }
 
   // === 3. Strapi ===
-  try {
-    await axios.post(`${STRAPI_URL}/api/zayavkas`, {
-      data: { name, phone },
-    });
-    console.log('Заявка сохранена в Strapi');
-  } catch (err) {
-    console.error('❌ Ошибка при записи в Strapi:', err.message);
-  }
+  // try {
+  //   await axios.post(`${STRAPI_URL}/api/zayavkas`, {
+  //     data: { name, phone },
+  //   });
+  //   console.log('Заявка сохранена в Strapi');
+  // } catch (err) {
+  //   console.error('❌ Ошибка при записи в Strapi:', err.message);
+  // }
 
   res.status(200).json({ message: 'Заявка обработана' });
 });

@@ -17,7 +17,14 @@ import mongoose from 'mongoose';
 const app = express();
 const PORT = process.env.PORT || 7007;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: 'https://delaizabor-nsk.ru',
+    methods: ['GET', 'POST', 'OPTIONS'],
+    credentials: true,
+  })
+);
+
 app.use(bodyParser.json());
 
 mongoose

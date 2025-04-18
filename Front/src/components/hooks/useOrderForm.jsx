@@ -9,6 +9,7 @@ export function useOrderForm(initialCountryCode = 'RU') {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [countryCode, setCountryCode] = useState(initialCountryCode);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Состояния для ошибок
   const [nameError, setNameError] = useState('');
@@ -71,6 +72,7 @@ export function useOrderForm(initialCountryCode = 'RU') {
   const handleSubmit = async (onSuccessCallback) => {
     // Сначала проверяем форму
     if (!validateForm()) return;
+    setIsSubmitting(true);
 
     try {
       await OrderFormApi.registerOrder(name, `+${countryCode} ${phone}`);
@@ -89,6 +91,8 @@ export function useOrderForm(initialCountryCode = 'RU') {
     } catch (error) {
       console.error('Ошибка при отправке данных:', error);
       setMessage('Ошибка при создании заявки');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -106,5 +110,6 @@ export function useOrderForm(initialCountryCode = 'RU') {
     handleSubmit,
     setPhoneError,
     handleNameChange,
+    isSubmitting,
   };
 }

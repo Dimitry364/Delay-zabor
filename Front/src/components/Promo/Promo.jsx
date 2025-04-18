@@ -10,7 +10,6 @@ function Promo() {
   const { openOrderPopup } = useContext(OrderPopupContext);
   const { cards } = useContext(CardsContext);
 
-  console.log('openOrderPopup:', openOrderPopup);
   return (
     <section className='promo'>
       <div className='promo__container'>

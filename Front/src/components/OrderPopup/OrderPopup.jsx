@@ -21,6 +21,7 @@ function OrderPopup() {
     handleNameChange,
     setPhone,
     setPhoneError,
+    isSubmitting,
   } = useOrderForm('RU'); // Передаём начальный код страны
 
   if (!isOrderPopupOpen) return null; // Если попап закрыт, не рендерим его
@@ -118,7 +119,7 @@ function OrderPopup() {
               type='submit'
               title='Отправить заявку'
             >
-              Отправить
+              {isSubmitting ? 'Отправка...' : 'Отправить'}
             </button>
           </fieldset>
 
