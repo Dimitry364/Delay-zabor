@@ -44,14 +44,14 @@ const imageMap = {
 async function main() {
   try {
     await mongoose.connect(process.env.MONGO_URI);
-    console.log('✅ Подключение к MongoDB успешно');
+    console.log('Подключение к MongoDB успешно');
 
     const updates = await Promise.all(
       Object.entries(imageMap).map(async ([slug, data]) => {
         const card = await Card.findOne({ slug });
 
         if (!card) {
-          console.warn(`⚠️ Карточка со slug "${slug}" не найдена`);
+          console.warn(`Карточка со slug "${slug}" не найдена`);
           return null;
         }
 
@@ -67,15 +67,15 @@ async function main() {
         }
 
         await card.save();
-        console.log(`✅ Обновлена карточка: ${slug}`);
+        console.log(`Обновлена карточка: ${slug}`);
         return card;
       })
     );
 
-    console.log('🎉 Все карточки обновлены!');
+    console.log('Все карточки обновлены!');
     process.exit(0);
   } catch (err) {
-    console.error('❌ Ошибка выполнения скрипта:', err);
+    console.error('Ошибка выполнения скрипта:', err);
     process.exit(1);
   }
 }

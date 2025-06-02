@@ -17,19 +17,19 @@ async function importData() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log('✅ Подключено к MongoDB');
+    console.log('Подключено к MongoDB');
 
     // Очистить старые данные (по желанию)
     await Card.deleteMany({});
-    console.log('🧹 Старые карточки удалены');
+    console.log('Старые карточки удалены');
 
     // Добавить новые карточки
     await Card.insertMany(cards);
-    console.log(`✅ Импортировано ${cards.length} карточек`);
+    console.log(`Импортировано ${cards.length} карточек`);
 
     process.exit();
   } catch (err) {
-    console.error('❌ Ошибка при импорте карточек:', err);
+    console.error('Ошибка при импорте карточек:', err);
     process.exit(1);
   }
 }

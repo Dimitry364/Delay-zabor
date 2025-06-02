@@ -1,4 +1,3 @@
-// routes/order.js
 import express from 'express';
 import nodemailer from 'nodemailer';
 import axios from 'axios';
@@ -6,7 +5,7 @@ import rateLimit from 'express-rate-limit';
 
 const router = express.Router();
 
-// Антиспам: максимум 1 заявка с IP в 10 сек
+// Антиспам: максимум 2 заявки с IP в 10 сек
 const limiter = rateLimit({
   windowMs: 10 * 1000, // 10 секунд
   max: 2,
@@ -18,7 +17,7 @@ router.post('/', async (req, res) => {
   const { name, phone } = req.body;
 
   if (!name || !phone) {
-    console.warn('❌ Запрос без имени или телефона');
+    console.warn('Запрос без имени или телефона');
     return res.status(400).json({ error: 'Имя и телефон обязательны' });
   }
 
@@ -35,7 +34,7 @@ router.post('/', async (req, res) => {
 
   // const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
 
-  // === 1. Email ===
+  // 1. Email
   try {
     const transporter = nodemailer.createTransport({
       host: 'smtp.yandex.ru',
@@ -62,13 +61,11 @@ router.post('/', async (req, res) => {
       </div>
     `,
     });
-
-    console.log('Email отправлен на:', RECIPIENTS.join(', '));
   } catch (err) {
-    console.error('❌ Ошибка отправки email:', err.message);
+    console.error('Ошибка отправки email:', err.message);
   }
 
-  // === 2. Telegram ===
+  // 2. Telegram
   try {
     await axios.post(
       `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`,
@@ -77,19 +74,18 @@ router.post('/', async (req, res) => {
         text,
       }
     );
-    console.log('Telegram-уведомление отправлено');
   } catch (err) {
-    console.error('❌ Ошибка отправки в Telegram:', err.message);
+    console.error('Ошибка отправки в Telegram:', err.message);
   }
 
-  // === 3. Strapi ===
+  // 3. Strapi
   // try {
   //   await axios.post(`${STRAPI_URL}/api/zayavkas`, {
   //     data: { name, phone },
   //   });
   //   console.log('Заявка сохранена в Strapi');
   // } catch (err) {
-  //   console.error('❌ Ошибка при записи в Strapi:', err.message);
+  //   console.error('Ошибка при записи в Strapi:', err.message);
   // }
 
   res.status(200).json({ message: 'Заявка обработана' });

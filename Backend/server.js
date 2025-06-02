@@ -1,4 +1,3 @@
-// server.js
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -32,8 +31,8 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log('✅ MongoDB подключена'))
-  .catch((err) => console.error('❌ Ошибка подключения MongoDB:', err));
+  .then(() => console.log('MongoDB подключена'))
+  .catch((err) => console.error('Ошибка подключения MongoDB:', err));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
