@@ -47,14 +47,14 @@ function Header() {
             Контакты
           </Link>
         </div>
-        <Link to='tel:+73833181026' className='header__link-phone'>
+        <Link to='tel:+79232279303' className='header__link-phone'>
           <img
             className='header__link-phone-icon header__link'
             src={phoneIcon}
             alt='Иконка телефона'
           />
           <p className='header__link-phone-number header__link'>
-          +7 (383) 318 10 26
+          +7 923 227-93-03
           </p>
         </Link>
 
@@ -64,7 +64,7 @@ function Header() {
 
         {/* Только бургер-кнопка */}
         <div className='header__burger-container'>
-          <Link to='tel:+73833181026' className='header__link-b'>
+          <Link to='tel:+79232279303' className='header__link-b'>
             <img
               className='header__link-phone-icon-burger header__link'
               src={phoneIcon}
