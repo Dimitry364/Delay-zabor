@@ -68,7 +68,7 @@ function Footer() {
           <ul className='footer__list'>
             <li>
               <a
-                href='tel:+73833181026'
+                href='tel:+79232279303'
                 className='footer__link footer__link_about'
               >
                 +7 923 227-93-03
