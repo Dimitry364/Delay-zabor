@@ -38,7 +38,7 @@ function Contacts() {
           <h1 className='contacts__title'>Контакты</h1>
           <ul className='contacts__list'>
             <li className='contacts__item'>
-              Телефон: <a href='tel:+73833181026'>+7 923 227-93-03</a>
+              Телефон: <a href='tel:+79232279303'>+7 923 227-93-03</a>
             </li>
             <li className='contacts__item'>
               Телефон: <a href='tel:+73832279303'>+7 383 227-93-03</a>
